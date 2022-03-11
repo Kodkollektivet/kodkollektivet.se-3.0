@@ -1,4 +1,4 @@
 node_modules/
-2logs/
-.ds_store
+.DS_Store
 .vscode/
+vendor/
