@@ -1,0 +1,67 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+#cover-img {
+    background-position: 50% 20%;
+}
+
+iframe.LinkedIn {
+    background-color: #fff;
+}
+iframe.Discord {
+    background-image: linear-gradient(to right, rgb(32, 33, 37), rgb(49, 49, 54));
+}
+
+.fixed:not(.z-20):not(.z-30):not(.z-40):not(.z-50):not(.z-60):not(.z-70):not(.z-80):not(.z-90):not(.z-100) {
+    z-index: 10;
+}
+
+#iimg-popover img {
+    max-height: 80vh;
+    max-width: 80vw;
+}
+
+#thread-hide {
+    left: -60px
+}
+
+#thread-hide div {
+    top: 80px;
+}
+
+#profile-data-toggle {
+    text-decoration: underline;
+    transition: ease-in-out .2s;
+    cursor: pointer;
+}
+
+#profile-data-toggle:hover {
+    color: rgb(58, 191, 248);
+}
+
+.tech-item {
+    transition: ease-in-out .3;
+}
+
+.tech-item.tech-hide {
+    height: 0;
+    overflow: hidden;
+    position: absolute;
+    pointer-events: none;
+}
+
+.tw-ignore {
+    padding-left: unset;
+    padding-right: unset;
+}
+
+.tw-ignore pre {
+    padding: unset;
+    background: unset;
+}
+
+.tw-ignore code {
+    border-radius: 0 !important;
+    padding-bottom: 36px !important;
+}

@@ -1,0 +1,210 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.svg_bg {
+    background-size: 70%;
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='510' preserveAspectRatio='none' viewBox='0 0 1920 510'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1016%26quot%3b)' fill='none'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1017%26quot%3b)'%3e%3cpath d='M1815 225L1785 255L1755 255M1515 225L1485 195L1455 195L1425 195M1365 225L1335 255L1305 255L1275 255L1245 255L1215 255M1305 225L1275 195M1395 225L1365 195L1335 165L1305 165L1275 165M1845 225L1815 255M1965 255L1935 225L1905 225L1875 225L1845 225L1815 225L1785 195L1755 195L1725 195L1695 225L1665 225L1635 225L1605 225L1575 225L1545 225L1515 225L1485 225L1455 225L1425 225L1395 225L1365 225L1335 225L1305 225L1275 225L1245 225' stroke='rgba(253%2c 253%2c 253%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M1237.5 225 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1747.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1417.5 195 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1207.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1267.5 195 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1267.5 165 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1807.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(253%2c 253%2c 253%2c 1)'%3e%3c/path%3e%3cpath d='M495 285L465 315L435 315L405 315L375 315L345 315L315 315M1155 315L1125 345L1095 375L1065 375L1035 375L1005 375L975 375M1095 315L1065 285M1605 315L1575 285L1545 285L1515 285L1485 255L1455 255L1425 255L1395 255L1365 255L1335 285L1305 285L1275 285L1245 285L1215 285L1185 285L1155 285L1125 285L1095 285L1065 255L1035 255L1005 255L975 255L945 255M1905 285L1875 255L1845 255M645 255L615 285L585 285L555 285L525 285L495 315L465 345M945 285L915 315L885 315L855 315L825 315L795 315L765 315L735 345L705 345L675 345L645 345L615 345L585 345L555 345L525 345L495 345L465 375M615 255L585 225L555 225L525 225L495 225L465 225M1485 315L1455 285L1425 285L1395 285L1365 285M1515 315L1485 345M1935 285L1905 255M1635 315L1605 285L1575 255L1545 255L1515 255M1725 285L1695 285L1665 285L1635 285M1965 285L1935 285L1905 285L1875 285L1845 285L1815 285L1785 285L1755 285L1725 285L1695 315L1665 315L1635 315L1605 315L1575 315L1545 315L1515 315L1485 315L1455 315L1425 315L1395 315L1365 315L1335 315L1305 315L1275 315L1245 315L1215 315L1185 315L1155 315L1125 315L1095 315L1065 315L1035 315L1005 315L975 285L945 285L915 285L885 285L855 285L825 285L795 285L765 255L735 255L705 255L675 255L645 255L615 255L585 255L555 255L525 255L495 285L465 285L435 255L405 255' stroke='rgba(245%2c 245%2c 245%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M397.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM307.5 315 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM967.5 375 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1057.5 285 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM937.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1837.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM457.5 345 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM457.5 375 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM457.5 225 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1357.5 285 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1477.5 345 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1897.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1507.5 255 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1627.5 285 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(245%2c 245%2c 245%2c 1)'%3e%3c/path%3e%3cpath d='M1665 375L1635 345M1695 345L1665 345M1965 315L1935 315L1905 315L1875 315L1845 315L1815 315L1785 315L1755 315L1725 345L1695 345L1665 375L1635 375L1605 345L1575 345' stroke='rgba(245%2c 245%2c 245%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M1567.5 345 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1627.5 345 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1657.5 345 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(245%2c 245%2c 245%2c 1)'%3e%3c/path%3e%3cpath d='M1575 195L1545 165L1515 165L1485 165L1455 165L1425 165M1695 165L1665 195L1635 195M1605 195L1575 165M1965 195L1935 195L1905 195L1875 195L1845 195L1815 195L1785 165L1755 165L1725 165L1695 165L1665 165L1635 165L1605 195L1575 195L1545 195' stroke='rgba(250%2c 250%2c 250%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M1537.5 195 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1417.5 165 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1627.5 195 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1567.5 165 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(250%2c 250%2c 250%2c 1)'%3e%3c/path%3e%3cpath d='M1215 435L1185 465L1155 465L1125 465L1095 465L1065 465L1035 435L1005 435L975 465L945 465L915 465L885 465M1125 435L1095 405L1065 405M975 405L945 435L915 435L885 435M1185 435L1155 405L1125 405M1365 345L1335 375L1305 375M1395 345L1365 375L1335 405L1305 405L1275 405L1245 435M1245 405L1215 405L1185 375L1155 375L1125 375M1425 345L1395 375L1365 405L1335 435L1305 435L1275 435M1305 345L1275 345L1245 375L1215 375L1185 345M1965 345L1935 345L1905 345L1875 345L1845 345L1815 345L1785 345L1755 345L1725 375L1695 375L1665 405L1635 405L1605 375L1575 375L1545 375L1515 375L1485 375L1455 345L1425 345L1395 345L1365 345L1335 345L1305 345L1275 375L1245 405L1215 435L1185 435L1155 435L1125 435L1095 435L1065 435L1035 405L1005 405L975 405L945 405L915 405' stroke='rgba(250%2c 250%2c 250%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M907.5 405 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM877.5 465 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1057.5 405 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM877.5 435 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1117.5 405 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1297.5 375 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1237.5 435 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1117.5 375 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1267.5 435 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1177.5 345 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(250%2c 250%2c 250%2c 1)'%3e%3c/path%3e%3cpath d='M1485 135L1455 105L1425 75M1515 135L1485 105M1545 135L1515 105L1485 75M1605 135L1575 105L1545 105L1515 75M1965 165L1935 165L1905 165L1875 165L1845 165L1815 165L1785 135L1755 135L1725 135L1695 135L1665 135L1635 135L1605 135L1575 135L1545 135L1515 135L1485 135L1455 135' stroke='rgba(253%2c 253%2c 253%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M1447.5 135 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1417.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1477.5 105 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1477.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1507.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(253%2c 253%2c 253%2c 1)'%3e%3c/path%3e%3cpath d='M1455 465L1425 435L1395 435L1365 435M1845 375L1815 405L1785 435L1755 435L1725 435L1695 435L1665 465L1635 465L1605 465M1785 375L1755 405M1605 435L1575 435L1545 435L1515 435L1485 435M1905 375L1875 405L1845 405L1815 435L1785 465M1965 375L1935 375L1905 375L1875 375L1845 375L1815 375L1785 375L1755 375L1725 405L1695 405L1665 435L1635 435L1605 435L1575 465L1545 465L1515 465L1485 465L1455 465L1425 465L1395 465L1365 465L1335 465L1305 465' stroke='rgba(253%2c 253%2c 253%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M1297.5 465 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1357.5 435 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1597.5 465 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1747.5 405 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1477.5 435 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1777.5 465 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(253%2c 253%2c 253%2c 1)'%3e%3c/path%3e%3cpath d='M1755 105L1725 75L1695 75L1665 75L1635 75M1905 135L1875 105L1845 105L1815 105L1785 75M1935 135L1905 105L1875 75M1965 135L1935 135L1905 135L1875 135L1845 135L1815 135L1785 105L1755 105L1725 105L1695 105L1665 105L1635 105L1605 75L1575 75' stroke='rgba(245%2c 245%2c 245%2c 1)' stroke-width='5'%3e%3c/path%3e%3cpath d='M1567.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1627.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1777.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0zM1867.5 75 a7.5 7.5 0 1 0 15 0 a7.5 7.5 0 1 0 -15 0z' fill='rgba(245%2c 245%2c 245%2c 1)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1016'%3e%3crect width='1920' height='510' fill='white'%3e%3c/rect%3e%3c/mask%3e%3cmask id='SvgjsMask1017'%3e%3crect width='1920' height='510' fill='white'%3e%3c/rect%3e%3cpath d='M1241.25 225 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1751.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1421.25 195 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1211.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1271.25 195 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1271.25 165 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1811.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M401.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM311.25 315 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM971.25 375 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1061.25 285 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM941.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1841.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM461.25 345 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM461.25 375 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM461.25 225 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1361.25 285 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1481.25 345 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1901.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1511.25 255 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1631.25 285 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1571.25 345 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1631.25 345 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1661.25 345 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1541.25 195 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1421.25 165 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1631.25 195 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1571.25 165 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M911.25 405 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM881.25 465 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1061.25 405 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM881.25 435 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1121.25 405 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1301.25 375 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1241.25 435 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1121.25 375 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1271.25 435 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1181.25 345 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1451.25 135 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1421.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1481.25 105 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1481.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1511.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1301.25 465 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1361.25 435 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1601.25 465 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1751.25 405 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1481.25 435 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1781.25 465 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3cpath d='M1571.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1631.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1781.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0zM1871.25 75 a3.75 3.75 0 1 0 7.5 0 a3.75 3.75 0 1 0 -7.5 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.waves {
+    position:relative;
+    width: 100%;
+    height:15vh;
+    margin-bottom:-7px; /*Fix for safari gap*/
+    min-height:100px;
+    max-height:150px;
+  }
+  
+  /* Animation */
+  
+  .w-parallax > use {
+    animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  }
+  .w-parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+  }
+  .w-parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+  }
+  .w-parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+  }
+  .w-parallax > use:nth-child(4) {
+    animation-delay: -5s;
+    animation-duration: 20s;
+  }
+  @keyframes move-forever {
+    0% {
+     transform: translate3d(-90px,0,0);
+    }
+    100% { 
+      transform: translate3d(85px,0,0);
+    }
+  }
+  /*Shrinking for mobile*/
+  @media (max-width: 768px) {
+    .waves {
+      height:40px;
+      min-height:40px;
+    }
+  }
+
+  .cookiescriptlogo {
+    fill: rgba(37, 99, 235, 1) !important;
+}
+  
+  #cookiescript_injected_fsd {
+    backdrop-filter: blur(4px) brightness(0.8) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    #cookiescript_fsd_wrapper {
+        background-color: rgb(12, 19, 34) !important;
+        margin: unset !important;
+        top: unset !important;
+        bottom: unset !important;
+        #cookiescript_buttons {
+            border-bottom: solid 1px #111 !important;
+            margin-bottom: unset !important;
+        }
+        
+        .mdc-mdc-switch.mdc-switch--selected .mdc-switch__track {
+            background-color: rgba(37, 99, 235, 1) !important;
+        }
+    }
+    
+    #cookiescript_accept {
+        background-color: #3fb6ee !important;
+    }
+    
+    #cookiescript_reject {
+        background-color: rgb(12, 19, 34) !important;
+    }
+    
+    #cookiescript_accept,
+    #cookiescript_reject {
+        color: #ffffff !important;
+        &:hover {
+            filter: brightness(1.2);
+        }
+    }
+    
+    .cookiescript_fsd_footer {
+        border-top: solid 1px #3fb6ee !important;
+    }
+    
+    .cookiescript_fsd_header {
+        display: none !important;
+    }
+    
+    #cookiescript_aboutcookies,
+    #cookiescript_declaration {
+        background-color: rgb(12, 19, 34) !important;
+        &.cookiescript_active {
+            background-color: #111 !important;
+        }
+        &:not(.cookiescript_active) {
+            border-bottom: solid 1px #3fb6ee;
+        }
+        &.cookiescript_active {
+            border-bottom: solid 1px #3fb7ee00;
+        }
+    }
+
+    #cookiescript_aboutcookies.cookiescript_active {
+        border-top-left-radius: 6px !important;
+        border-left: solid 1px #3fb6ee;
+    }
+
+    #cookiescript_declaration.cookiescript_active {
+        border-top-right-radius: 6px !important;
+        border-right: solid 1px #3fb6ee;
+    }
+    
+    
+    .cookiescript_fsd__category_name,
+    .cookiescript_fsd_title {
+        color: rgba(37, 99, 235, 1);
+    }
+    
+    #cookiescript_save {
+        background-color: rgba(37, 99, 235, 1) !important;
+        border-color: rgba(37, 99, 235, 1) !important;
+        transition: ease-in-out .2s;
+        &:hover {
+           filter: brightness(1.2);
+        }
+    }
+    
+    #cookiescript_aboutwrap,
+    .cookiescript_fsd_description,
+    .cookiescript_category_description {
+        color: #ffffff;
+    }
+    
+    .cookiescript_fsd_main,
+    #cookiescript_buttons,
+    #cookiescript_fsd_wrapper {
+        background-color: rgb(12, 19, 34) !important;
+    }
+    
+    .cookiescript_fsd_tabs_content {
+        background-color: #111 !important;
+        mask-image: unset !important;
+    }
+    
+  }
+  
+  #cookiescript_injected {
+    background-color: #111 !important;
+    #cookiescript_tabscontent #cookiescript_categories div,
+    .cookiescript_gear,
+    #cookiescript_reject,
+    #cookiescript_accept {
+      transition: ease-in-out .3s !important;
+    }
+    #cookiescript_tabscontent .cookiescript_active,
+    #cookiescript_accept {
+      background-color: rgba(37, 99, 235, 1) !important;
+    }
+    #cookiescript_manage:hover .cookiescript_gear {
+        fill: rgba(37, 99, 235, 1) !important;
+    }
+    #cookiescript_reject {
+        border: solid 2px rgba(37, 99, 235, 1) !important;
+        &:hover {
+            border: solid 2px #111 !important;
+            background-color: #111 !important;
+        }
+    }
+    #cookiescript_tabscontent #cookiescript_categories div:hover,
+    #cookiescript_reject:hover,
+    #cookiescript_accept:hover {
+      background-color: #111 !important;
+    }
+    #cookiescript_tabscontent #cookiescript_categories div:hover {
+        color: #fff;
+    }
+    
+    .no-cookie #cookiescript_badge,
+    #cookiescript_reportdate,
+    #cookiescript_copyright {
+        display: none !important;
+    }
+  }
+  
+  #cookiescript_readmore:hover {
+    color: rgba(37, 99, 235, 1) !important;
+  }

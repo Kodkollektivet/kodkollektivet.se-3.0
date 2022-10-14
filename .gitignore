@@ -1,4 +1,9 @@
-node_modules/
 .DS_Store
-.vscode/
-vendor/
+/.vscode/
+.env
+.env.prod
+
+/vendor/
+node_modules/
+npm-debug.log
+yarn-error.log
