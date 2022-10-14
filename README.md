@@ -1,4 +1,4 @@
-# <img src="./public/images/svg/logo.svg" style="width: 40px;"> Kodkollektivet 3.0
+# <img src="http://dev.kodkollektivet.se/public/images/svg/logo.svg" style="width: 40px;"> Kodkollektivet 3.0
 
 ### Kodkollektivet.se front & back.
 
@@ -6,7 +6,7 @@ Kodkollektivet is an IT student organization of Linnaeus University (Sweden).
 <br>
 <br>
 
-![image](./public/images/item_covers/default.jpg`)
+![image](`http://dev.kodkollektivet.se/public/images/item_covers/default.jpg`)
 
 ## Main focus
 
