@@ -6,7 +6,7 @@ Kodkollektivet is an IT student organization of Linnaeus University (Sweden).
 <br>
 <br>
 
-![image](`http://dev.kodkollektivet.se/public/images/item_covers/default.jpg`)
+<img src="http://dev.kodkollektivet.se/public/images/item_covers/default.jpg">
 
 ## Main focus
 
