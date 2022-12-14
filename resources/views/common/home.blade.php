@@ -83,31 +83,33 @@
     </div>
 
     <div>
-    <div class="max-w-2xl mx-auto pt-10 xs:pb-5 sm:pb-5 mb:pb-24 grid items-center grid-cols-1 gap-y-16 gap-x-8 xs:px-0 sm:px-0 md:px-4 lg:px-4 sm:py-32 lg:max-w-7xl lg:pt-4 lg:pb-32 lg:grid-cols-2  ">
+    <div class="max-w-2xl mx-auto pt-10 xs:pb-5 sm:pb-5 mb:pb-24 grid grid-cols-1 gap-y-16 gap-x-8 xs:px-0 sm:px-0 md:px-4 lg:px-4 sm:py-32 lg:max-w-7xl lg:pt-4 lg:pb-32 lg:grid-cols-2  ">
       <div>
         <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-gray-200">Our projects</h2>
-        <p class="mt-4 text-gray-500 sm:text-lg md:text-xl lg:text-xl">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, dolore perferendis tempore eveniet repellendus consequatur? Aspernatur quisquam commodi corrupti alias ullam ipsam quas, id, impedit exercitationem accusantium omnis? Natus, nobis.</p>
+
+        <p class="mt-4 text-gray-500 text-lg">KK-V has a wide variety of things going on: from ai, microcontrollers and fullstack WEB development to white hat hacking on our own servers. We try to make everything accessible to everyone so you can jump in as a noob – or get something as a pro.</p>
+        <p class="mt-4 text-gray-500 text-lg">We are always interested in new ideas. So if you have a project in mind implementing it with us will give you a head start.</p>
   
         <dl class="mt-16 grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-10 sm:gap-y-16 lg:gap-x-8">
           <div class="border-t border-gray-700 pt-4">
             <dt class="font-medium text-lg text-blue-100">Robotics</dt>
-            <dd class="mt-2 text-md text-gray-500">Saepe ullam, deleniti illo iste repudiandae suscipit adipisci tenetur.</dd>
+            <dd class="mt-2 text-md text-gray-500">Mice for mazes, drawing machines. Quadcopters, boats and subs, – controlled with AI.</dd>
+          </div>
+
+          <div class="border-t border-gray-700 pt-4">
+            <dt class="font-medium text-lg text-blue-100">Education</dt>
+            <dd class="mt-2 text-md text-gray-500">In collaboration with LNU and IT Gården we have ran education sessions and created projects for schools.</dd>
+          </div> 
+
+          <div class="border-t border-gray-700 pt-4">
+            <dt class="font-medium text-lg text-blue-100">Hardware</dt>
+            <dd class="mt-2 text-md text-gray-500">Making 3D printers and CNC’s. Physical parts of robotics projects.</dd>
           </div>
   
           <div class="border-t border-gray-700 pt-4">
             <dt class="font-medium text-lg text-blue-100">Software</dt>
-            <dd class="mt-2 text-md text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.</dd>
+            <dd class="mt-2 text-md text-gray-500">Internet of Things, servers and AI.</dd>
           </div>
-  
-          <div class="border-t border-gray-700 pt-4">
-            <dt class="font-medium text-lg text-blue-100">Hardware</dt>
-            <dd class="mt-2 text-md text-gray-500">Nesciunt quis mollitia quasi non!</dd>
-          </div>
-  
-          <div class="border-t border-gray-700 pt-4">
-            <dt class="font-medium text-lg text-blue-100">Education</dt>
-            <dd class="mt-2 text-md text-gray-500">Facilis quas nisi et sequi vel veritatis quos beatae fuga unde hic dolores.</dd>
-          </div> 
   
           <div>
             <dd>
@@ -119,7 +121,7 @@
   
         </dl>
       </div>
-      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8 xs:hidden sm:hidden md:grid lg:grid">
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8 xs:hidden sm:hidden md:grid lg:grid mt-16">
         <img src="/public/images/static/static_0.jpg" class="bg-base-100 rounded-lg object-cover h-60 w-full">
         <img src="/public/images/static/static_1.jpg" class="bg-base-100 rounded-lg object-cover h-60 w-full">
         <img src="/public/images/static/static_2.jpg" class="bg-base-100 rounded-lg object-cover h-60 w-full">
