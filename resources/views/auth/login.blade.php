@@ -6,6 +6,13 @@
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('login') }}">
+
+            <div class="mb-4">
+                <p class="text-sm text-base-content italic">
+                    Use {{ '@' }}student.lnu.se if you have registered using an lnu.se account!
+                </p>
+            </div>
+
             @csrf
 
             <div>

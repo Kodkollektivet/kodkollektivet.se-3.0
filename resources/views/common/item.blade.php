@@ -140,7 +140,7 @@
                  alt="'{{ $item->name }}' main image.">
         </p>
         
-        <p>{!! $item->description !!}</p>
+        <p class="overflow-x-scroll">{!! $item->description !!}</p>
         
         <br>
 

@@ -89,7 +89,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 ## TODOs
 
 ### Urgent
-1. Non-Chromium-based browser support
+1. Non-Chromium-based browser support ✅
 2. Email templates (e.g., invitation, welcome)
 3. Forms, requests, routes, methods for projects
 4. XML Sitemap

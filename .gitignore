@@ -1,9 +1,12 @@
 .DS_Store
-/.vscode/
 .env
 .env.prod
 
-/vendor/
-node_modules/
+/.vscode
+/public/images/item_covers
+/public/images/posts
+/vendor
+/node_modules
+
 npm-debug.log
 yarn-error.log

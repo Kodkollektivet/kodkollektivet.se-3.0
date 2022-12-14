@@ -58,21 +58,21 @@
 
     <div class="container m-auto text-gray-400 xs:pb-10 sm:pb-10 md:pb-32 lg:pb-32 max-w-2xl mx-auto lg:max-w-7xl xs:px-0 sm:px-0 md:px-4 lg:px-4">
         <div class="mx-auto grid gap-6 lg:w-full lg:grid-cols-3">
-            <a href="/events/code-hubs-and-hackatons" class="transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur hover:text-base-300 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 border-1 bg-base-100 border-gray-800">
+            <a href="/events/code-hubs-and-hackatons" class="transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur hover:text-base-300 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 border-1 bg-base-100 border-gray-800 relative">
                 <div class="mb-16 space-y-4">
                     <h3 class="text-2xl font-semibold text-blue-100">Code hubs <code class="font-mono">&&</code> hackatons</h3>
                     <p class="mb-3">Fika, talks, teamwork and other cool stuff.</p>
                 </div>
                 <img src="/public/images/svg/events-code.svg" class="w-1/5 absolute right-6 bottom-6" alt="illustration" loading="lazy">
             </a>
-            <a href="/events/workshops-and-company-events" class="transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur hover:text-base-300 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 border-1 bg-base-100 border-gray-800">
+            <a href="/events/workshops-and-company-events" class="transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur hover:text-base-300 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 border-1 bg-base-100 border-gray-800 relative">
                 <div class="mb-16 space-y-4">
                     <h3 class="text-2xl font-semibold text-blue-100">Workshops <code class="font-mono">&&</code> company events</h3>
                     <p class="mb-3">Learn, network and meet your future employers!</p>
                 </div>
                 <img src="/public/images/svg/events-wrkshp.svg" class="w-1/5 absolute right-6 bottom-6" alt="illustration" loading="lazy">
             </a>
-            <a href="/events/parties-and-more" class="transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur hover:text-base-300 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 border-1 bg-base-100 border-gray-800">
+            <a href="/events/parties-and-more" class="transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur hover:text-base-300 rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8 border-1 bg-base-100 border-gray-800 relative">
                 <div class="mb-16 space-y-4">
                     <h3 class="text-2xl font-semibold text-blue-100">Parties <code class="font-mono">&&</code> more</h3>
                     <p class="mb-3">Is there life aafter code? (research suggests there could be)</p>
@@ -90,24 +90,24 @@
   
         <dl class="mt-16 grid xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-6 gap-y-10 sm:gap-y-16 lg:gap-x-8">
           <div class="border-t border-gray-700 pt-4">
-            <dt class="font-medium text-lg text-blue-100">Lorem</dt>
+            <dt class="font-medium text-lg text-blue-100">Robotics</dt>
             <dd class="mt-2 text-md text-gray-500">Saepe ullam, deleniti illo iste repudiandae suscipit adipisci tenetur.</dd>
           </div>
   
           <div class="border-t border-gray-700 pt-4">
-            <dt class="font-medium text-lg text-blue-100">ipsum</dt>
+            <dt class="font-medium text-lg text-blue-100">Software</dt>
             <dd class="mt-2 text-md text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit.</dd>
           </div>
   
           <div class="border-t border-gray-700 pt-4">
-            <dt class="font-medium text-lg text-blue-100">Dolor</dt>
+            <dt class="font-medium text-lg text-blue-100">Hardware</dt>
             <dd class="mt-2 text-md text-gray-500">Nesciunt quis mollitia quasi non!</dd>
           </div>
   
           <div class="border-t border-gray-700 pt-4">
-            <dt class="font-medium text-lg text-blue-100">Sit amet</dt>
+            <dt class="font-medium text-lg text-blue-100">Education</dt>
             <dd class="mt-2 text-md text-gray-500">Facilis quas nisi et sequi vel veritatis quos beatae fuga unde hic dolores.</dd>
-          </div>
+          </div> 
   
           <div>
             <dd>
