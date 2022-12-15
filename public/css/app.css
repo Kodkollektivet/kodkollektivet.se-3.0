@@ -15468,6 +15468,9 @@ body[dir="rtl"] .checkbox:checked,
 .bg-fixed {
   background-attachment: fixed;
 }
+.bg-scroll {
+  background-attachment: scroll;
+}
 .fill-current {
   fill: currentColor;
 }
@@ -16614,6 +16617,11 @@ iframe.Discord {
   color: rgb(31 41 55 / var(--tw-text-opacity));
 }
 
+.hover\:text-blue-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
 .hover\:no-underline:hover {
   -webkit-text-decoration-line: none;
           text-decoration-line: none;
@@ -17304,6 +17312,16 @@ iframe.Discord {
 .active\:text-neutral:active {
   --tw-text-opacity: 1;
   color: hsl(var(--n) / var(--tw-text-opacity));
+}
+
+.active\:text-blue-200:active {
+  --tw-text-opacity: 1;
+  color: rgb(191 219 254 / var(--tw-text-opacity));
+}
+
+.active\:text-blue-700:active {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
 .btn-outline.group:hover .group-hover\:btn-warning .badge-outline {

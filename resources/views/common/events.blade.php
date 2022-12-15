@@ -60,7 +60,7 @@
         </div>
         @endforeach
 
-        {{ $events->links() }}
+        {{ $events->links('pagination.custom') }}
 
         @else
 
