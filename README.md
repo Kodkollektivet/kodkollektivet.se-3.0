@@ -92,7 +92,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 1. Non-Chromium-based browser support ✅
 2. Email templates (e.g., invitation, welcome)
 3. Forms, requests, routes, methods for projects
-4. XML Sitemap
+4. Google index, XML sitemap ✅
 5. Comment backend code
 6. Open House notification / banner (make it haunt the website from Monday through Tuesday)
 7. SMTP
