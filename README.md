@@ -97,7 +97,8 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 6. Open House notification / banner (make it haunt the website from Monday through Tuesday)
 7. SMTP
 8. @kodkollektivet.se emails for board people
-9. Address + Google Maps
+9. Address + Google Maps ✅
+10. Favicon ✅
 
 ### Other
 1. Refactor: EventController, PostController, ProjectController

@@ -3,8 +3,14 @@
 .env.prod
 
 /.vscode
+
 /public/images/item_covers
 /public/images/posts
+/public/images/avatars
+/public/images/deleted
+/public/images/events
+/public/images/covers
+
 /vendor
 /node_modules
 

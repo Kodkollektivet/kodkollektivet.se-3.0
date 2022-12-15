@@ -8,7 +8,11 @@
             <div class="md:order-last lg:order-last mb-6 space-y-6 md:mb-0 md:w-6/12 lg:w-6/12">
                 <h1 class="xs:mt-20 sm:mt-20 md:mt-0 font-bold xs:text-4xl sm:text-4xl md:text-5xl lg:text-5xl text-gray-300 xs:text-center sm:text-center md:text-left">What is <code class="font-mono">$<span class="text-gray-100">this</span></code>?</h1>
                 <p class="xs:text-lg sm:text-lg md:text-xl lg:text-xl xs:text-center sm:text-center md:text-left">Kodkollektivet is an IT student organization of Linnaeus University (Sweden).</p>
-                <p class="xs:text-lg sm:text-lg md:text-xl lg:text-xl mt-2 pb-4 xs:text-center sm:text-center md:text-left">We do a bunch of things, both software and hardware-wise.</p>
+                <p class="xs:text-lg sm:text-lg md:text-xl lg:text-xl mt-2 xs:text-center sm:text-center md:text-left pb-4">We do a bunch of things, both software and hardware-wise.</p>
+                <p class="text-lg mt-2 pb-4 xs:text-center sm:text-center md:text-left flex">
+                    Find us at Växjö Linnaeus Science Park, Framtidsvägen 14, Växjö.
+                    <a href="#map" class="flex font-semibold transition ease-in-out duration-200">&nbsp;See map &nbsp;<svg class="fill-current w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"/></svg></a>
+                </p>
                 <div class="flex flex-row-reverse flex-wrap gap-4 md:gap-6 xs:justify-center sm:justify-center md:justify-end lg:justify-end">
                     <a href="#projects" type="button" title="Projects" class="btn transition ease-in-out duration-200 bg-neutral border-1 border-gray-700 shadow-xl hover:btn-accent active:btn-accent focus:btn-accent">
                         Our work
@@ -205,6 +209,264 @@
     </div>
 
 </div>
+
+<section style="height: 678px; max-height: 50vh" class="w-screen m-0 p-0" id="map">
+
+</section>
+
+<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAho8y-HCKAoFsQk65H8c0C89PbY3CKsCs&callback=initMap"></script>
+<script>
+    // Initialize and add the map
+    function initMap() {
+    // The location of kkV
+    const kkV = { lat: 56.8563535, lng: 14.8244578 };
+    // The map, centered at kkV
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: kkV,
+        styles: [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8ec3b9"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1a3646"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#4b6878"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#64779e"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.province",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#4b6878"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.man_made",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#334e87"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.natural",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#023e58"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#283d6a"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#6f9ba5"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#023e58"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#3C7680"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#304a7d"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#98a5be"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#2c6675"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "color": "#255763"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#b0d5ce"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#023e58"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#98a5be"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1d2c4d"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.line",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#283d6a"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#3a4762"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#0e1626"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#4e6d70"
+      }
+    ]
+  }
+]
+    });
+    // The marker, positioned at kkV
+    const marker = new google.maps.Marker({
+        position: kkV,
+        map: map,
+    });
+    }
+
+    window.initMap = initMap;
+</script>
 
 @endsection
 
