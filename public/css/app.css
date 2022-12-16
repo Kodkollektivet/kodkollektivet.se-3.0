@@ -15468,9 +15468,6 @@ body[dir="rtl"] .checkbox:checked,
 .bg-fixed {
   background-attachment: fixed;
 }
-.bg-scroll {
-  background-attachment: scroll;
-}
 .fill-current {
   fill: currentColor;
 }
@@ -16542,6 +16539,11 @@ iframe.Discord {
   color: rgb(219 234 254 / var(--tw-text-opacity));
 }
 
+.hover\:text-blue-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
 .hover\:text-blue-200:hover {
   --tw-text-opacity: 1;
   color: rgb(191 219 254 / var(--tw-text-opacity));
@@ -16615,11 +16617,6 @@ iframe.Discord {
 .hover\:text-gray-800:hover {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
-}
-
-.hover\:text-blue-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
 .hover\:no-underline:hover {
@@ -17304,6 +17301,11 @@ iframe.Discord {
   color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
+.active\:text-blue-700:active {
+  --tw-text-opacity: 1;
+  color: rgb(29 78 216 / var(--tw-text-opacity));
+}
+
 .active\:text-base-100:active {
   --tw-text-opacity: 1;
   color: hsl(var(--b1) / var(--tw-text-opacity));
@@ -17312,16 +17314,6 @@ iframe.Discord {
 .active\:text-neutral:active {
   --tw-text-opacity: 1;
   color: hsl(var(--n) / var(--tw-text-opacity));
-}
-
-.active\:text-blue-200:active {
-  --tw-text-opacity: 1;
-  color: rgb(191 219 254 / var(--tw-text-opacity));
-}
-
-.active\:text-blue-700:active {
-  --tw-text-opacity: 1;
-  color: rgb(29 78 216 / var(--tw-text-opacity));
 }
 
 .btn-outline.group:hover .group-hover\:btn-warning .badge-outline {
@@ -18831,10 +18823,6 @@ iframe.Discord {
     right: 0px;
   }
 
-  .lg\:-top-1 {
-    top: -0.25rem;
-  }
-
   .lg\:order-last {
     order: 9999;
   }
@@ -18886,10 +18874,6 @@ iframe.Discord {
 
   .lg\:ml-4 {
     margin-left: 1rem;
-  }
-
-  .lg\:-mt-14 {
-    margin-top: -3.5rem;
   }
 
   .lg\:block {
@@ -19121,11 +19105,6 @@ iframe.Discord {
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
-  }
-
-  .lg\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 
   .lg\:text-2xl {

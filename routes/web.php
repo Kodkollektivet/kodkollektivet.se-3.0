@@ -265,6 +265,10 @@ Route::group(['middleware' => 'auth'], function () {
         return \App\Http\Controllers\EmailController::sendVerificationEmail(Auth::user()->email, Auth::user()->verification);
     });
 
+    Route::get('/toggle-doorbell', function () {
+        return \App\Http\Controllers\EnvController::DoorbellToggle(Auth::user());
+    });
+
 });
 
 Route::get('/posts-fetch-more', function (Request $request) {
@@ -277,6 +281,10 @@ Route::get('/comment-replies', function (Request $request) {
 
 Route::get('/canvas', function (Request $request) {
     return \App\Http\Controllers\CanvasController::renderCanvas($request);
+});
+
+Route::post('/ring-doorbell', function (Request $request) {
+    return \App\Http\Controllers\DiscordController::ringDoorbell(Session::getId());
 });
 
 // Handler for Instafram redirects

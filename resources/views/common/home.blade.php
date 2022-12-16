@@ -194,16 +194,7 @@
 
             @endif
 
-            <div class="card w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-primary-content {{ $posts->count() ? 'mt-10' : ''}} xs:py-4 sm:py-4 md:pt-4 lg:pt-4 md:pb-8 lg:pb-8 border-none shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title text-white xs:text-3xl sm:text-2xl md:text-2xl lg:text-3xl">Don't miss out,</h2>
-                    <p class="text-white xs:text-md sm:text-md md:text-lg lg:text-lg">Subscribe to our newsletter and keep track of all the things we do!</p>
-                    <div class="card-actions xs:justify-start sm:justify-start md:justify-end lg:justify-end xs:mt-5 sm:mt-5 md:mt-0 lg:-mt-14 lg:-top-1 relative xs:w-full sm:w-full xs:flex-nowrap sm:flex-nowrap">
-                        <button class="btn text-white xs:btn-sm sm:btn-sm xs:text-xs sm:text-xs" id="mwsltr">Subscribe</button>
-                        <a href="{{route('blog')}}" class="xs:ml-2 sm:ml-2 md:ml-4 lg:ml-4 btn text-neutral btn-outline border-2 xs:btn-sm sm:btn-sm xs:text-xs sm:text-xs">Our blog</a>
-                    </div>
-                </div>
-            </div>
+            @include('components.open-house')
 
         </div>
     </div>

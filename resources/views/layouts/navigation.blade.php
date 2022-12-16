@@ -28,7 +28,7 @@
                 <a id="nav-blog" class="transition ease-in-out duration-200 hover:text-teal-200 xs:hidden" href="/blog">Blog</a>
             </li>
 
-            @if (isset(Auth::user()->position_id) && (Auth::user()->position->create_events || Auth::user()->position->edit_socia))
+            @if (isset(Auth::user()->position_id) && (Auth::user()->position->create_events || Auth::user()->position->edit_social))
 
             <li class="xs:hidden" tabindex="4">
                 <a class="transition ease-in-out duration-200 hover:text-teal-200">
@@ -60,8 +60,27 @@
                     <li class="w-full">
                         <a href="/reports" class="transition ease-in-out duration-200 hover:text-teal-200">View reports ({{ \App\Models\Report::where('resolved', 0)->count(); }})</a>
                     </li>
+
+                    <li class="w-full">
+                        <a onclick="doorbellToggle()" id="doorbell" class="transition ease-in-out duration-200 hover:text-teal-200">{{ env('DOORBELL_ACTIVE') ? 'Disable doorbell' : 'Enable doorbell' }}</a>
+                    </li>
                 </ul>
             </li>
+
+            <script>
+                function doorbellToggle() {
+                    $.ajax({
+                        url:         '/toggle-doorbell',
+                        method:      "GET",
+                        success:     function (result) {
+                            result.option ? $('#doorbell').text(`${result.option} doorbell`) : null
+                        },
+                        error: function (result) {
+                            
+                        }
+                    })
+                }
+            </script>
 
             @endif
 

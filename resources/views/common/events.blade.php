@@ -36,6 +36,8 @@
             
         </ul>
 
+        @include('components.open-house')
+        
         @if ($events->count())
 
         @foreach ($events as $event)
