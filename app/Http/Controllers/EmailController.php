@@ -21,7 +21,7 @@ class EmailController extends Controller
     public static function sendVerificationEmail(string $email, string $key) {
 
         mail($email, '✨ Welcome to Kodkollektivet! ✨', "We are glad to have you! To verify your email and access the 
-                      website\'s functionality, follow this <a href='". env('APP_URL') ."/verify-user/$key'>link</a>.", static::$headers . phpversion());
+                      website\'s functionality, follow this <a href='www.kodkollektivet.se/verify-user/$key'>link</a>.", static::$headers . phpversion());
 
         return response()->json(['message' => "Sent verification email to $email 👍"]);
     }
@@ -46,14 +46,14 @@ class EmailController extends Controller
 
     private static function sendInvite(User $user, string $email) {
 
-        mail($email, '💻 Kodkollektivet.se: Invitation to join', "Hej! Looks like $user->name (aka <a href='/member/{$user->username}'>$user->username</a>) has invited you to join Kodkollektivet ✨\n\t
-                      Use this ($email) email address to <a href=“". env('APP_URL') ."/register”>register</a>, or ask your friend to send a new invite to a different mailbox.\n\r\n\r
+        mail($email, '💻 Kodkollektivet.se: Invitation to join', "Hej! Looks like $user->name (aka <a href='www.kodkollektivet.se/member/{$user->username}'>$user->username</a>) has invited you to join Kodkollektivet ✨\n\t
+                      Use this ($email) email address to <a href='www.kodkollektivet.se/register'>register</a>, or ask your friend to send a new invite to a different mailbox.\n\r\n\r
                       Looking forward to seeing you join our ranks 😉", static::$headers . phpversion());
     }
 
     public static function sendInviteAccepted(User $sender, User $recepient) {
 
-        mail($sender->email, '💻 Kodkollektivet.se: Invitation accepted', "Hej! User $recepient->name (aka <a href='/member/{$recepient->username}'>$recepient->username</a>)
+        mail($sender->email, '💻 Kodkollektivet.se: Invitation accepted', "Hej! User $recepient->name (aka <a href='www.kodkollektivet.se/member/{$recepient->username}'>$recepient->username</a>)
                               has accepted your invitation! Come and help them set their profile up 🙂", static::$headers . phpversion());
     }
 

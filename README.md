@@ -90,11 +90,11 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 
 ### Urgent
 1. Non-Chromium-based browser support ✅
-2. Email templates (e.g., invitation, welcome)
+2. Email templates (e.g., invitation, welcome) ✅
 3. Forms, requests, routes, methods for projects
 4. Google index, XML sitemap ✅
 5. Comment backend code
-6. Open House notification / banner (make it haunt the website from Monday through Tuesday)
+6. Open House notification / banner ✅
 7. SMTP
 8. @kodkollektivet.se emails for board people
 9. Address + Google Maps ✅
@@ -117,7 +117,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 3. Notify about posts from followed users
 4. Notify about changes to followed events
 5. Newsletter
-6. Discord integration (primarily for the "doorbell" notification)
+6. Discord integration (primarily for the "doorbell" notification) ✅
 7. Websockets and instant messaging
 8. Company accounts, user flow etc
 9. Forum / helpdesk
