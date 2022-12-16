@@ -187,6 +187,22 @@
 
     </div>
 
+    @if (Auth::check() && Auth::user()->id == $user->id && !$user->remove_data && !(isset($user->profile->about) && strlen($user->profile->about) && isset($user->profile->cover) && isset($user->avatar) && $user->technologies->count()))
+
+    <div id="prompt-wrapper" class="w-full flex absolute top-12 left-0 justify-center items-center">
+        <div class="max-w-2xl lg:max-w-7xl alert alert-info shadow-lg mt-10 border-0 w-full flex">
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current flex-shrink-0 w-6 h-6 xs:hidden sm:hidden"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span id="prompt" class="ml-4 mr-2">{{ !in_array(Auth::user()->role_id, [4, 5]) ? 'Your profile looks quite empty; what do we do about this?.. 🤔' : (Auth::user()->role_id == 4 ? 'Verify your email address to customize the profile and share content!' : 'Whoops! Looks like you got banned before you cound configure your page... 🤔') }}</span>
+            </div>
+            <a {{ !in_array(Auth::user()->role_id, [4, 5]) ? 'href=/edit-profile/?prompt=true' : (Auth::user()->role_id == 4 ? 'onclick=verifyResend($("#prompt"))' : '') }} class="btn btn-sm text-xs btn-outline border-neutral text-neutral hover:text-info hover:bg-neutral hover:border-neutral">
+                {{ !in_array(Auth::user()->role_id, [4, 5]) ? 'Fix this!' : 'Resend verification' }}
+            </a>
+        </div>
+    </div>
+
+    @endif
+
     <div class="max-w-2xl mx-auto md:pt-10 pb-24 px-4 flex sm:px-6 lg:max-w-7xl lg:pt-4 lg:pb-32 xs:flex-wrap sm:flex-wrap md:flex-nowrap flex-row items-stretch relative z-10" style="min-height: 70vh">
         <div class="xs:w-full sm:w-full">
             <div class="md:sticky lg:sticky md:top-16 lg:top-16 xs:mb-20 sm:mb-20 ">

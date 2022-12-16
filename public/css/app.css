@@ -14583,6 +14583,9 @@ body[dir="rtl"] .checkbox:checked,
 .-right-3 {
   right: -0.75rem;
 }
+.top-12 {
+  top: 3rem;
+}
 .top-10 {
   top: 2.5rem;
 }
@@ -14603,9 +14606,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .bottom-6 {
   bottom: 1.5rem;
-}
-.top-12 {
-  top: 3rem;
 }
 .-bottom-1 {
   bottom: -0.25rem;
@@ -14673,6 +14673,10 @@ body[dir="rtl"] .checkbox:checked,
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+.mx-20 {
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 .mx-4 {
   margin-left: 1rem;
@@ -15313,16 +15317,16 @@ body[dir="rtl"] .checkbox:checked,
   --tw-border-opacity: 1;
   border-color: rgb(163 230 53 / var(--tw-border-opacity));
 }
+.border-neutral {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--n) / var(--tw-border-opacity));
+}
 .border-base-100 {
   --tw-border-opacity: 1;
   border-color: hsl(var(--b1) / var(--tw-border-opacity));
 }
 .border-transparent {
   border-color: transparent;
-}
-.border-neutral {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--n) / var(--tw-border-opacity));
 }
 .border-error {
   --tw-border-opacity: 1;
@@ -15847,13 +15851,13 @@ body[dir="rtl"] .checkbox:checked,
   --tw-text-opacity: 1;
   color: hsl(var(--b3, var(--b2)) / var(--tw-text-opacity));
 }
-.text-error {
-  --tw-text-opacity: 1;
-  color: hsl(var(--er) / var(--tw-text-opacity));
-}
 .text-neutral {
   --tw-text-opacity: 1;
   color: hsl(var(--n) / var(--tw-text-opacity));
+}
+.text-error {
+  --tw-text-opacity: 1;
+  color: hsl(var(--er) / var(--tw-text-opacity));
 }
 .text-base-100 {
   --tw-text-opacity: 1;
@@ -16408,14 +16412,14 @@ iframe.Discord {
   border-color: rgb(163 230 53 / var(--tw-border-opacity));
 }
 
-.hover\:border-base-100:hover {
-  --tw-border-opacity: 1;
-  border-color: hsl(var(--b1) / var(--tw-border-opacity));
-}
-
 .hover\:border-neutral:hover {
   --tw-border-opacity: 1;
   border-color: hsl(var(--n) / var(--tw-border-opacity));
+}
+
+.hover\:border-base-100:hover {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--b1) / var(--tw-border-opacity));
 }
 
 .hover\:border-yellow-400:hover {
@@ -16468,6 +16472,11 @@ iframe.Discord {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-neutral:hover {
+  --tw-bg-opacity: 1;
+  background-color: hsl(var(--n) / var(--tw-bg-opacity));
+}
+
 .hover\:bg-transparent:hover {
   background-color: transparent;
 }
@@ -16475,11 +16484,6 @@ iframe.Discord {
 .hover\:bg-error:hover {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--er) / var(--tw-bg-opacity));
-}
-
-.hover\:bg-neutral:hover {
-  --tw-bg-opacity: 1;
-  background-color: hsl(var(--n) / var(--tw-bg-opacity));
 }
 
 .hover\:bg-yellow-400:hover {
