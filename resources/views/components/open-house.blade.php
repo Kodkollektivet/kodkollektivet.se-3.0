@@ -5,7 +5,7 @@
             There be free fika and snacks! 🍪&nbsp;☕️
         </p>
 
-        @if (env('DOORBELL_ACTIVE') && date('h') >= 17 && date('h') <= 22)
+        @if (env('DOORBELL_ACTIVE') && date('H') >= 17 && date('H') <= 22)
 
         <div class="card-actions justify-start mt-0 relative xs:w-full sm:w-full xs:flex-nowrap sm:flex-nowrap">
             @if (Request::route()->getName() != 'home')
