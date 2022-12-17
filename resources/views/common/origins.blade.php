@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="b-32 pt-20 from-base-300 to-base-100 via-neutral bg-gradient-to-br border-t-2 border-b-2 border-gray-800 col-start-1 row-start-1 h-auto w-full">
-    <article class="prose m-auto xs:px-4 sm:px-4">
+    <article class="prose m-auto xs:px-4 sm:px-4 relative z-10">
         <h1 class="mb-4 mt-10">The origins of Kodkollektivet</h1>
         <h3 class="mt-0 mb-2">– by 
             <code><a class="no-underline transition ease-in-out duration-300 hover:text-primary" href="#void">
@@ -44,10 +44,76 @@
             </div>
         </div>
 
+        @if ($events->count() || $posts->count())
+
+        <h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl mb-2 w-full text-blue-200">What's happening now?</h1>
+
+            @if ($events->count())
+
+            <h2 class="text-2xl text-blue-200 font-extrabold tracking-tight sm:text-3xl mt-4 mb-10">– Events</h2>
+        
+            <div class="grid gap-y-6 grid-cols-2 gap-x-6">
+
+                @foreach ($events as $event)
+
+                <a href="/event/{{ $event->link }}/?id={{ $event->id }}" class="card group bg-base-100 border-gray-800 shadow-xl text-gray-200 transition ease-in-out duration-200 hover:text-cyan-300">
+                    <div class="w-full h-60  rounded-lg rounded-b-none overflow-hidden ">
+                        <img src="/public/images/item_covers/{{ isset($event->image) ? $event->image : 'default.jpg' }}" alt="Post {{ $event->name }} cover image." class="transition decoration-fuchsia-300 ease-in-out duration-300 w-full h-full object-center object-cover group-hover:opacity-75 group-hover:scale-105">
+                    </div>
+                    <div class="card-body h-1/3">
+                        <h3 class="text-sm text-cyan-300">{{ date('F jS, Y', strtotime($event->created_at)) }}</h3>
+                        <p class="mt-1 text-lg font-medium">{{ $event->name }}</p>
+                    </div>
+                </a>
+
+                @endforeach
+
+            </div>
+
+            <div class="xs:w-1/2 sm:w-1/3 md:w-1/3 lg:w-1/3 pl-0.5">
+                <a href="/events" class="btn w-full transition ease-in-out duration-200 btn-outline border-blue-100 text-blue-100 group group-hover:btn-warning hover:bg-yellow-400 hover:border-yellow-400 xs:mt-5 sm:mt-10 md:mt-10 lg:mt-10">
+                    View all
+                </a>
+            </div>
+
+            @endif
+
+            @if ($posts->count())
+
+            <h2 class="text-2xl text-blue-200 font-extrabold tracking-tight sm:text-3xl mt-4 mb-10">– Recent posts</h2>
+        
+            <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+
+                @foreach ($posts as $post)
+
+                <a href="/post/{{ $post->link }}/?id={{ $post->id }}" class="card group bg-base-100 border-gray-800 shadow-xl text-gray-200 transition ease-in-out duration-200 hover:text-cyan-300">
+                    <div class="w-full h-60  rounded-lg rounded-b-none overflow-hidden ">
+                        <img src="/public/images/item_covers/{{ isset($post->image) ? $post->image : 'default.jpg' }}" alt="Post {{ $post->name }} cover image." class="transition decoration-fuchsia-300 ease-in-out duration-300 w-full h-full object-center object-cover group-hover:opacity-75 group-hover:scale-105">
+                    </div>
+                    <div class="card-body h-1/3">
+                        <h3 class="text-sm text-cyan-300">{{ date('F jS, Y', strtotime($post->created_at)) }}</h3>
+                        <p class="mt-1 text-lg font-medium">{{ $post->name }}</p>
+                    </div>
+                </a>
+
+                @endforeach
+
+            </div>
+
+            <div class="xs:w-1/2 sm:w-1/3 md:w-1/3 lg:w-1/3 pl-0.5">
+                <a href="/blog" class="btn w-full transition ease-in-out duration-200 btn-outline border-blue-100 text-blue-100 group group-hover:btn-warning hover:bg-yellow-400 hover:border-yellow-400 xs:mt-5 sm:mt-10 md:mt-10 lg:mt-10">
+                    View all
+                </a>
+            </div>
+            
+            @endif
+
+        @endif
+
     </article>
 
     <div>
-        <svg class="waves relative -mt-32 z-0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        <svg class="waves relative z-0 -mt-16" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             <defs>
                 <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />

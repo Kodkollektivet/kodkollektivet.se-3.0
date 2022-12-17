@@ -106,7 +106,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 3. Remove HTML from renderers; use components
 4. Minimise logic in templates
 5. Repetitive HTML / JS to reusable components
-6. Feature latest posts and events in /origins
+6. Feature latest posts and events in /origins ✅
 7. Event calendar (controller, view, export)
 8. Think about spam
 9. Sponsors listing, forms etc

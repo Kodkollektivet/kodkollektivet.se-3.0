@@ -38,8 +38,13 @@ abstract class CommonLayout extends Component
 
     public static function origins()
     {
+        $posts  = CommonLayout::addLinks([post::where('community', 1)->orderBy('created_at', 'desc')->take(2)->get()]);
+        $events = CommonLayout::addLinks([Event::orderBy('created_at', 'desc')->take(2)->get()]);
+
         return view('common.origins')->with([
-            'footer' => static::footer()
+            'footer' => static::footer(),
+            'posts'  => $posts[0],
+            'events' => $events[0]
         ]);
     }
 
