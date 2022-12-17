@@ -61,7 +61,7 @@
                         <img src="/public/images/item_covers/{{ isset($event->image) ? $event->image : 'default.jpg' }}" alt="Post {{ $event->name }} cover image." class="transition decoration-fuchsia-300 ease-in-out duration-300 w-full h-full object-center object-cover group-hover:opacity-75 group-hover:scale-105">
                     </div>
                     <div class="card-body h-1/3">
-                        <h3 class="text-sm text-cyan-300">{{ date('F jS, Y', strtotime($event->created_at)) }}</h3>
+                        <h3 class="text-sm text-cyan-300">{{ date('F jS, Y', strtotime($event->date)) }}</h3>
                         <p class="mt-1 text-lg font-medium">{{ $event->name }}</p>
                     </div>
                 </a>
@@ -105,7 +105,7 @@
                     View all
                 </a>
             </div>
-            
+
             @endif
 
         @endif
