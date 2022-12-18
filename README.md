@@ -96,7 +96,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 5. Comment backend code
 6. Open House notification / banner ✅
 7. SMTP
-8. @kodkollektivet.se emails for board people
+8. @kodkollektivet.se emails for board people ✅
 9. Address + Google Maps ✅
 10. Favicon ✅
 
@@ -109,7 +109,10 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 6. Feature latest posts and events in /origins ✅
 7. Event calendar (controller, view, export)
 8. Think about spam
-9. Sponsors listing, forms etc
+9. Sponsors listing ✅
+10. Former sponsors / other collaborators
+11. Edit sponsors form
+12. Internal mailbox
 
 ### A day may come, but it is not this day
 1. Docs (with Markdown API)

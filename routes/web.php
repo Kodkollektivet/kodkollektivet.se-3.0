@@ -10,17 +10,19 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserStatusDataController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\SocialMediaController;
-use App\Http\Requests\ItemFormRequest;
+
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SponsorController;
 
 use App\Http\Controllers\Forms\ProfileFormController;
 use App\Http\Controllers\Forms\ItemFormController;
 
 use App\View\Components\CommonLayout;
 
-
+use App\Http\Requests\ItemFormRequest;
+use App\Http\Requests\SponsorsRequest;
 
 /**
  * Frontend routes:
@@ -267,6 +269,18 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/toggle-doorbell', function () {
         return \App\Http\Controllers\EnvController::DoorbellToggle(Auth::user());
+    });
+
+    Route::post('/sponsor-store', function (SponsorsRequest $request) {
+        return \App\Http\Controllers\SponsorController::store(Auth::user(), $request);
+    });
+
+    Route::post('/sponsor-update', function (SponsorsRequest $request) {
+        return \App\Http\Controllers\SponsorController::update(Auth::user(), $request);
+    });
+
+    Route::get('/sponsor-delete/{id}', function (int $id) {
+        return \App\Http\Controllers\SponsorController::destroy(Auth::user(), $id);
     });
 
 });

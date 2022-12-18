@@ -8,11 +8,12 @@ use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {
-    public function delete(Request $request) {
-
-        if (ImageController::checkTypeAllowed($request->type)) {
-
-            foreach ($request->images as $image) {
+    public function delete(Request $request)
+    {
+        if (ImageController::checkTypeAllowed($request->type))
+        {
+            foreach ($request->images as $image)
+            {
                 $path = public_path('images/' . $request->type . 's/') . $image;
                 file_exists($path) ? unlink($path) : null;
 
@@ -22,15 +23,17 @@ class ImageController extends Controller
         }
     }
 
-    public function store(object $item, Request $request) {
+    public function store(object $item, Request $request)
+    {
 
-        if (ImageController::checkTypeAllowed($request->type)) {
-            
-            foreach ($request->images as $image) {
-
+        if (ImageController::checkTypeAllowed($request->type))
+        {
+            foreach ($request->images as $image)
+            {
                 $titl = time() . '_' . str_replace(' ', '', ($image->getClientOriginalName()));
 
-                while (file_exists(public_path("images/" . $request->type . "s/$titl"))) {
+                while (file_exists(public_path("images/" . $request->type . "s/$titl")))
+                {
                     $titl = rand(1, 9) . $titl;
                 }
 
@@ -44,10 +47,11 @@ class ImageController extends Controller
         }
     }
 
-    public function logDeleted(int $user_id, int $author_id, string $src, int $log_id = null) {
+    public function logDeleted(int $user_id, int $author_id, string $src, int $log_id = null)
+    {
 
-        if (file_exists(public_path("/images/$src"))) {
-
+        if (file_exists(public_path("/images/$src")))
+        {
             $src_new = substr($src, strpos($src, '/') + 1);
 
             copy(public_path("/images/$src"), public_path("/images/deleted/$src_new"));
@@ -65,17 +69,18 @@ class ImageController extends Controller
         }
     }
 
-    private function checkTypeAllowed(string $type) {
-
-        return isset($type) && in_array($type, ['avatar', 'cover', 'event', 'post', 'project', 'item_cover']);
+    private function checkTypeAllowed(string $type)
+    {
+        return isset($type) && in_array($type, ['avatar', 'cover', 'event', 'post', 'project', 'item_cover', 'sponsor']);
     }
 
-    private function imageResize(string $path, string $type = null) {
-
+    private function imageResize(string $path, string $type = null)
+    {
         $image     = \Intervention\Image\Facades\Image::make($path);
         $max_width = isset($type) && $type != 'cover' ? 600 : (isset($type) ? 1920 : 100);
 
-        if ($image->width() > $max_width) {
+        if ($image->width() > $max_width)
+        {
             $width  = $image->width();
             $height = $image->height();
 
@@ -83,17 +88,20 @@ class ImageController extends Controller
         }
     }
 
-    private function imageSaveDB(object $item, string $titl, Request $request) {
-
-        if ($request->type != 'avatar' && strpos($request->type, 'cover') === false) {
-
+    private function imageSaveDB(object $item, string $titl, Request $request)
+    {
+        if (!in_array($request->type, ['avatar', 'sponsor']) && strpos($request->type, 'cover') === false)
+        {
             image::create(['src' => $titl, 'item_id' => $item->id, 'item_type' => $request->type]);
-        } else {
-            
-            if ($request->type == 'avatar') {
+        }
+        else {
+            if ($request->type == 'avatar')
+            {
                 $item->avatar = $titl;
                 $item->save();
-            } elseif ($request->type == 'cover') {
+            }
+            elseif ($request->type == 'cover')
+            {
                 $item->profile->cover = $titl;
                 $item->profile->save();
             }

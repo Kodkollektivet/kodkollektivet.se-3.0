@@ -86,8 +86,45 @@
         </div>
     </div>
 
-    <div>
-    <div class="max-w-2xl mx-auto pt-10 xs:pb-5 sm:pb-5 mb:pb-24 grid grid-cols-1 gap-y-16 gap-x-8 xs:px-0 sm:px-0 md:px-4 lg:px-4 sm:py-32 lg:max-w-7xl lg:pt-4 lg:pb-32 lg:grid-cols-2  ">
+    @if (isset($sponsors) && $sponsors->count())
+
+
+        <div class="container m-auto mb-4 mt-0 xs:pb-10  max-w-2xl mx-auto lg:max-w-7xl xs:px-0 sm:px-0 md:px-4 lg:px-4">
+            <h1 class="text-4xl font-bold pb-2 text-gray-200">Our sponsors</h1>
+            <h2 class="text-xl font-bold pb-4"><code class="font-mono">2022 / 2023</code></h2>
+        </div>
+
+        <div class="container flex-wrap justify-around m-auto text-gray-400 xs:pb-10 sm:pb-10 md:pb-32 lg:pb-32 max-w-2xl lg:max-w-7xl xs:px-0 sm:px-0 md:px-4 lg:px-4 mx-auto grid gap-6 lg:w-full lg:grid-cols-3">
+
+            @foreach ($sponsors as $sponsor)
+
+                <a href="{{ $sponsor->website }}" target="_blank" class="card w-96 bg-neutral text-neutral-content transition ease-in-out duration-300 hover:text-white">
+                    <div class="card-body items-center">
+                        <img class="w-full h-1/3 object-contain object-left" src="/public/images/sponsors/{{ $sponsor->logo }}" alt="{{ $sponsor->name }} logo">
+                        <h2 class="card-title w-full mt-4">{{ $sponsor->name }}</h2>
+                        <p class="w-full">{{ $sponsor->description }}</p>
+                    </div>
+                </a>
+    
+            @endforeach
+
+            <div class="card w-96 bg-gradient-to-r from-cyan-500 to-blue-500 text-primary-content border-none shadow-xl h-max pb-8 self-end">
+                <div class="card-body">
+                    <h2 class="card-title w-full mt-4 text-3xl">Want to work with us?</h2>
+                    <a href="mailto:office@kodkollektivet.se?subject=Sponsorship / collaboration" class="xs:ml-2 btn text-neutral btn-outline border-2 xs:btn-sm sm:btn-sm xs:text-xs sm:text-xs w-max flex">
+                        Contact
+                        <svg class="fill-current w-4 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+
+    @endif
+
+    <div>        
+    <div class="max-w-2xl mx-auto pt-10 xs:pb-5 sm:pb-5 mb:pb-24 grid grid-cols-1 gap-y-16 gap-x-8 xs:px-0 sm:px-0 md:px-4 lg:px-4 sm:py-32 lg:max-w-7xl lg:pb-32 lg:grid-cols-2 xs:pt-16 sm:pt-24 md:pt-24 lg:pt-24">
       <div>
         <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl text-gray-200">Our projects</h2>
 

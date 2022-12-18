@@ -4,6 +4,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use App\Models\event;
 use App\Models\Post;
+use App\Models\Sponsor;
 use App\Models\SocialMedia;
 
 
@@ -31,8 +32,9 @@ abstract class CommonLayout extends Component
         $posts = CommonLayout::addLinks([post::where('community', 1)->orderBy('created_at', 'desc')->take(4)->get()]);
 
         return view('common.home')->with([
-            'footer' => static::footer(),
-            'posts'  => $posts[0]
+            'footer'   => static::footer(),
+            'posts'    => $posts[0],
+            'sponsors' => \App\Http\Controllers\SponsorController::index()
         ]);
     }
 
