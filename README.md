@@ -111,7 +111,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 8. Think about spam
 9. Sponsors listing ✅
 10. Former sponsors / other collaborators
-11. Edit sponsors form
+11. Edit sponsors form ✅
 12. Internal mailbox
 
 ### A day may come, but it is not this day
