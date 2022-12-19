@@ -19,13 +19,13 @@
 
                         @foreach ($sponsors as $sponsor)
 
-                        <div onclick="viewSponsor($(this), {{ $sponsor->id }})" class="md:py-2 lg:py-2 md:w-full lg:w-full xs:btn xs:btn-outline xs:btn-xs xs:text-xs sm:btn sm:btn-outline sm:btn-xs sm:text-xs transition ease-in-out duration-200 hover:text-gray-100 text-gray-400 cursor-pointer xs:rounded-full sm:rounded-full">
+                        <div onclick="viewSponsor($(this), {{ $sponsor->id }})" id="sponsor_{{ $sponsor->id }}" class="md:py-2 lg:py-2 md:w-full lg:w-full xs:btn xs:btn-outline xs:btn-xs xs:text-xs sm:btn sm:btn-outline sm:btn-xs sm:text-xs transition ease-in-out duration-200 hover:text-gray-100 text-gray-400 cursor-pointer xs:rounded-full sm:rounded-full">
                             {{ $sponsor->name }}
                         </div>
 
                         @endforeach
 
-                        <div onclick="addSponsorForm($(this))" class="md:py-2 lg:py-2 md:w-full lg:w-full xs:btn xs:btn-outline xs:btn-xs xs:text-xs sm:btn sm:btn-outline sm:btn-xs sm:text-xs transition ease-in-out duration-200 hover:text-gray-100 text-gray-400 cursor-pointer xs:rounded-full sm:rounded-full">
+                        <div id="sponsorAdd" onclick="addSponsorForm($(this))" class="md:py-2 lg:py-2 md:w-full lg:w-full xs:btn xs:btn-outline xs:btn-xs xs:text-xs sm:btn sm:btn-outline sm:btn-xs sm:text-xs transition ease-in-out duration-200 hover:text-gray-100 text-gray-400 cursor-pointer xs:rounded-full sm:rounded-full">
                             Add sponsor
                         </div>
 
@@ -88,7 +88,8 @@
                     </div>
 
                     <div class="bg-base-300 bg-opacity-50 px-4 py-3 text-right xs:px-6 sm:px-6">
-                        <div id="update" data-id="{{ $sponsors[0]->id }}" onclick="updateSponsor($(this).data('id'))" class="inline-flex cursor-pointer justify-center rounded-md bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Save</div>
+                        <div id="delete" data-id="{{ $sponsors[0]->id }}" onclick="deleteSponsor($(this).data('id'))" class="inline-flex cursor-pointer justify-center rounded-md text-error hover:text-base-300 py-2 px-4 text-sm font-medium shadow-sm hover:bg-error focus:outline-none focus:ring-2 focus:ring-error focus:ring-offset-2 mr-2 transition ease-in-out duration-200">Delete</div>
+                        <div id="update" data-id="{{ $sponsors[0]->id }}" onclick="updateSponsor($(this).data('id'))" class="inline-flex cursor-pointer justify-center rounded-md bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-200">Save</div>
                     </div>
 
                   </div>
@@ -157,7 +158,7 @@
 
                         response.sponsor.active ? $('input#active').val('on').attr('checked', '') : $('input#active').val('off').removeAttr('checked', '')
                         $('#logo-img').attr('src', `/public/images/sponsors/${response.sponsor.logo}`)
-                        $('#update').data('id', response.sponsor.id)
+                        $('#update, #delete').data('id', response.sponsor.id)
                     }
                 }
             })
@@ -171,8 +172,38 @@
             $('#sponsor input, #sponsor textarea').each(function() {
                 $(this).val('')
                 $('#logo-img').attr('src', '/public/images/item_covers/default.jpg')
-                $('#update').data('id', 0)
+                $('#update, #delete').data('id', 0)
                 $('#sponsor input#active').attr('checked', '').val('on')
+            })
+        }
+    }
+
+    function deleteSponsor(id) {
+        if (id) {
+            $.ajax({
+                url:        `/sponsor-delete/${id}`,
+                method:     "GET",
+                success:    function (response) {
+                    $('#alert-wrapper h2').text('Deleted successfully!')
+                    $(`#sponsor_${id}`).remove()
+                    $('.tabs div')[0].click()
+
+                    setTimeout(() => {
+                        alertToggle()
+                    }, 10)
+                },
+                error:      function (result) {
+                    $('#alert-wrapper h2').text('Failed to delete sponsor!')
+                    $('#alert-wrapper p').text('')
+
+                    $.each(result.responseJSON.errors, function( key, value ) {
+                        $('#alert-wrapper p').append(`${value[0]}<br>`)  
+                    });
+
+                    setTimeout(() => {
+                        alertToggle()
+                    }, 10)
+                }
             })
         }
     }
@@ -197,9 +228,11 @@
             contentType: false,
             success:    function (response) {
                 $('#alert-wrapper h2').text('Data updated successfully!')
+                !id ? $('#sponsorAdd')[0].insertAdjacentHTML('beforebegin', response.html) : null
 
                 setTimeout(() => {
                     alertToggle()
+                    !id ? $('.tabs div')[$('.tabs div').length - 2].click() : null
                 }, 10)
             },
             error:      function (result) {

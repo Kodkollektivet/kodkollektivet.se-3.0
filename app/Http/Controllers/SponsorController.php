@@ -57,7 +57,10 @@ class SponsorController extends Controller
 
             if (isset($sponsor))
             {                
-                return response()->json(['message' => 'Added successfully.'], 200);
+                return response()->json([
+                    'message' => 'Added successfully.',
+                    'html'    => SponsorController::renderHTML($sponsor)
+                ], 200);
             }
         }
 
@@ -75,7 +78,8 @@ class SponsorController extends Controller
                 $request = $request->all();
                 $delete_image = isset($request['logo']) ? $sponsor->logo : null;
 
-                if (isset($delete_image)) {
+                if (isset($delete_image))
+                {
                     $delete         = new Request();
                     $delete->images = array($delete_image);
                     $delete->type   = 'sponsor';
@@ -113,13 +117,23 @@ class SponsorController extends Controller
         {
             $sponsor = Sponsor::find($id);
 
-            if (isset($sponsor)) {
-                $sponsor::delete();
+            if (isset($sponsor))
+            {
+                unlink(public_path("images/sponsors/{$sponsor->logo}"));
+                $sponsor->delete();
+
                 return response()->json(['message' => 'Deleted successfully.'], 200);
             }
 
             return response()->json(['message' => 'Unable to delete record!'], 400);
         }
+    }
+
+    private function renderHTML(Sponsor $sponsor)
+    {
+        return "<div onclick='viewSponsor($(this), {$sponsor->id})' id='sponsor_{$sponsor->id}' class='md:py-2 lg:py-2 md:w-full lg:w-full xs:btn xs:btn-outline xs:btn-xs xs:text-xs sm:btn sm:btn-outline sm:btn-xs sm:text-xs transition ease-in-out duration-200 hover:text-gray-100 text-gray-400 cursor-pointer xs:rounded-full sm:rounded-full'>
+                    {$sponsor->name}
+                </div>";
     }
 
 }
