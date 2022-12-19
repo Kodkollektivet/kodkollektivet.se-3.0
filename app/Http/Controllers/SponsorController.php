@@ -44,13 +44,16 @@ class SponsorController extends Controller
     {
         if ($user->role_id == 1)
         {
+            $request = $request->all();
+
             $store         = new Request();
-            $store->images = array($request->logo);
+            $store->images = array($request['logo']);
             $store->type   = 'sponsor';
 
-            $request->logo = ImageController::store($user, $store);
+            $request['logo']   = ImageController::store($user, $store);
+            $request['active'] = $request['active'] == 'on';
 
-            $sponsor = Sponsor::create($request->all());
+            $sponsor = Sponsor::create($request);
 
             if (isset($sponsor))
             {                

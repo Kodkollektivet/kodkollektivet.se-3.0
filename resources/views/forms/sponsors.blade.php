@@ -25,6 +25,10 @@
 
                         @endforeach
 
+                        <div onclick="addSponsorForm($(this))" class="md:py-2 lg:py-2 md:w-full lg:w-full xs:btn xs:btn-outline xs:btn-xs xs:text-xs sm:btn sm:btn-outline sm:btn-xs sm:text-xs transition ease-in-out duration-200 hover:text-gray-100 text-gray-400 cursor-pointer xs:rounded-full sm:rounded-full">
+                            Add sponsor
+                        </div>
+
                     </div>
                 </div>
               </div>
@@ -55,7 +59,7 @@
                         <div>
                             <div class="block text-sm font-medium text-gray-100 mb-3">Logo</div>
                             <div class="mt-1 flex items-center">
-                            <label for="logo" class="inline-block bg-base-300 bg-opacity-50 border-gray-700 border-2 border-opacity-50 rounded-md">
+                            <label for="logo" class="inline-block bg-base-300 bg-opacity-50 border-gray-700 border-2 border-opacity-50 rounded-md overflow-hidden">
                                 <input id="logo" onchange="previewUploads(window.URL.createObjectURL(this.files[0]), 'logo')" name="logo" type="file" class="sr-only">
                                 <img title="change" id="logo-img" class="cursor-pointer h-full w-full object-contain object-center" src="/public/images/sponsors/{{ $sponsors[0]->logo }}">
                             </label>
@@ -67,7 +71,7 @@
                             <div class="mt-1 flex relative items-stretch">
                                 
                                 <div id="logo-prev" class="file-prev flex flex-col justify-between overflow-hidden transition ease-in-out duration-300 h-0">
-                                    <img class="w-40 h-auto rounded-md" src="" alt="Logo preview">
+                                    <img class="w-40 h-auto rounded-md overflow-hidden" src="" alt="Logo preview">
                                     <label class="mt-4 text-sm text-gray-400 italic">//&nbsp; Logo</label>
                                 </div>
 
@@ -76,7 +80,7 @@
 
                         <div class="block mt-4">
                             <label for="active" class="inline-flex items-center" onclick="toggleActive()">
-                                <input id="active" type="checkbox" class="rounded border-gray-300 text-blue-400 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="active" {{ $sponsors[0]->active ? 'checked' : '' }}>
+                                <input id="active" type="checkbox" class="rounded border-gray-300 text-blue-400 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="active" {{ $sponsors[0]->active ? 'checked value=on' : 'value=off' }}>
                                 <span class="ml-2 text-sm font-medium text-gray-100">Active sponsor</span>
                             </label>
                         </div>
@@ -126,13 +130,7 @@
     }
 
     function toggleActive() {
-        if ($('#sponsor input#active').attr('checked')) {
-            $('#sponsor input#active').removeAttr('checked')
-            $('#sponsor input#active').val('off')
-        } else {
-            $('#sponsor input#active').attr('checked', '')
-            $('#sponsor input#active').val('on')
-        }
+        $('#sponsor input#active').attr('checked') ? $('#sponsor input#active').removeAttr('checked').val('off') : $('#sponsor input#active').attr('checked', '').val('on')
     }
 
     function selectTab(tab) {
@@ -154,14 +152,27 @@
                 success:    function (response) {
                     if (response.sponsor) {
                         for (const [key, value] of Object.entries(response.sponsor)) {
-                            key != 'logo' ? $(`input#${key}, textarea#${key}`).val(value) : null
+                            key != 'logo' && key != 'active' ? $(`input#${key}, textarea#${key}`).val(value) : null
                         }
 
+                        response.sponsor.active ? $('input#active').val('on').attr('checked', '') : $('input#active').val('off').removeAttr('checked', '')
                         $('#logo-img').attr('src', `/public/images/sponsors/${response.sponsor.logo}`)
-
                         $('#update').data('id', response.sponsor.id)
                     }
                 }
+            })
+        }
+    }
+
+    function addSponsorForm(e) {
+        if (e.hasClass('text-gray-400')) {
+            selectTab(e)
+
+            $('#sponsor input, #sponsor textarea').each(function() {
+                $(this).val('')
+                $('#logo-img').attr('src', '/public/images/item_covers/default.jpg')
+                $('#update').data('id', 0)
+                $('#sponsor input#active').attr('checked', '').val('on')
             })
         }
     }
@@ -175,11 +186,11 @@
         })
 
         logoSet ? formData.append('logo', ($('#sponsor input#logo'))[0].files[0]) : null
-        formData.append('id', id)
+        id ? formData.append('id', id) : null
 
         $.ajax({
             headers:    headers,
-            url:        "/sponsor-update",
+            url:        id ? "/sponsor-update" : "/sponsor-store",
             method:     "POST",
             data:       formData,
             processData: false,
