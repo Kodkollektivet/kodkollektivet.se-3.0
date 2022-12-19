@@ -25,8 +25,8 @@ class SponsorRequest extends FormRequest
     {
         return [
             'name'        => ['string', 'max:50', 'min:3'],
-            'logo'        => ['file'],
-            'active'      => ['boolean'],
+            'logo'        => ['nullable', 'file'],
+            'active'      => ['string', 'in:on,off'],
             'website'     => ['nullable', 'string', 'max:100', 'min:10'],
             'description' => ['string', 'max:1000', 'min:3']
         ];

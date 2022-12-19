@@ -58,6 +58,10 @@
                     @endif
 
                     <li class="w-full">
+                        <a href="/sponsors" class="transition ease-in-out duration-200 hover:text-teal-200">Edit sponsors</a>
+                    </li>
+
+                    <li class="w-full">
                         <a href="/reports" class="transition ease-in-out duration-200 hover:text-teal-200">View reports ({{ \App\Models\Report::where('resolved', 0)->count(); }})</a>
                     </li>
 

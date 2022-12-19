@@ -17,9 +17,32 @@ class SponsorController extends Controller
         return Sponsor::where(['active' => 1])->get();
     }
 
+    public function form(User $user = null)
+    {
+        if (isset($user) && $user->role_id == 1)
+        {
+            return view('forms.sponsors')->with([
+                'sponsors' => Sponsor::all(),
+                'footer'   => \App\View\Components\CommonLayout::footer()
+            ]);
+        }
+    }
+
+    public function show(int $id)
+    {
+        $sponsor = Sponsor::find($id);
+
+        if (isset($sponsor))
+        {
+            return response()->json(['sponsor' => $sponsor], 200);
+        }
+
+        return response()->json(400);
+    }
+
     public function store(User $user, SponsorRequest $request)
     {
-        if ($user->position_id == 1)
+        if ($user->role_id == 1)
         {
             $store         = new Request();
             $store->images = array($request->logo);
@@ -40,41 +63,39 @@ class SponsorController extends Controller
 
     public function update(User $user, SponsorRequest $request)
     {
-        if ($user->position_id == 1)
+        if ($user->role_id == 1)
         {
             $sponsor = Sponsor::find($request->id);
 
             if (isset($sponsor))
             {
-                $delete_image = isset($request->logo) ? $sponsor->logo : null;
+                $request = $request->all();
+                $delete_image = isset($request['logo']) ? $sponsor->logo : null;
 
                 if (isset($delete_image)) {
                     $delete         = new Request();
                     $delete->images = array($delete_image);
-                    $delete->type   = $type;
+                    $delete->type   = 'sponsor';
         
                     \App\Http\Controllers\ImageController::delete($delete);
+
+                    $store         = new Request();
+                    $store->images = array($request['logo']);
+                    $store->type   = 'sponsor';
+    
+                    $request['logo'] = ImageController::store($user, $store);
                 }
 
-                $store         = new Request();
-                $store->images = array($request->logo);
-                $store->type   = 'sponsor';
+                $request['active'] = $request['active'] == 'on';
 
-                $request->logo = ImageController::store($user, $store);
+                $columns = \Illuminate\Support\Facades\Schema::getColumnListing('sponsors');
 
-                $sponsor = Sponsor::create($request->all());
-
-                if (isset($sponsor))
-                {                
-                    return response()->json(['message' => 'Added successfully.'], 200);
-                }
-
-                foreach ($sponsor as $key => &$value)
+                foreach ($request as $key => $value)
                 {
-                    isset($request->$key) && $request->$key != $value ? $sponsor->$key = $request->$key : null;
+                    in_array($key, $columns) && isset($value) ? $sponsor->$key = $value : null;
                 }
 
-                $sponsor::save();
+                $sponsor->save();
 
                 return response()->json(['message' => 'Updated successfully.'], 200);
             }
@@ -85,7 +106,7 @@ class SponsorController extends Controller
 
     public function destroy(User $user, int $id)
     {
-        if ($user->position_id == 1)
+        if ($user->role_id == 1)
         {
             $sponsor = Sponsor::find($id);
 

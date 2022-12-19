@@ -22,7 +22,7 @@ use App\Http\Controllers\Forms\ItemFormController;
 use App\View\Components\CommonLayout;
 
 use App\Http\Requests\ItemFormRequest;
-use App\Http\Requests\SponsorsRequest;
+use App\Http\Requests\SponsorRequest;
 
 /**
  * Frontend routes:
@@ -271,16 +271,24 @@ Route::group(['middleware' => 'auth'], function () {
         return \App\Http\Controllers\EnvController::DoorbellToggle(Auth::user());
     });
 
-    Route::post('/sponsor-store', function (SponsorsRequest $request) {
+    Route::post('/sponsor-store', function (SponsorRequest $request) {
         return \App\Http\Controllers\SponsorController::store(Auth::user(), $request);
     });
 
-    Route::post('/sponsor-update', function (SponsorsRequest $request) {
+    Route::post('/sponsor-update', function (SponsorRequest $request) {
         return \App\Http\Controllers\SponsorController::update(Auth::user(), $request);
     });
 
     Route::get('/sponsor-delete/{id}', function (int $id) {
         return \App\Http\Controllers\SponsorController::destroy(Auth::user(), $id);
+    });
+
+    Route::get('/sponsors', function () {
+        return SponsorController::form(Auth::user());
+    });
+
+    Route::get('/sponsor/{id}', function (int $id) {
+        return SponsorController::show($id);
     });
 
 });
