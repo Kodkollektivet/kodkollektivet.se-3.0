@@ -1,11 +1,16 @@
 <div class="card w-full bg-gradient-to-r from-cyan-500 to-blue-500 text-primary-content mt-10 border-none shadow-xl">
     <div class="card-body">
         <h2 class="card-title text-2xl mb-0" id="api-response">Open house every Tuesday</h2>
-        <p class="xs:text-md sm:text-md md:text-lg lg:text-lg mt-2 mb-4">Feel free to drop by our lab at Linnaeus Science Park, Framtidsvägen 14, anytime between 17 and 19.<br>
+        <p class="xs:text-md sm:text-md md:text-lg lg:text-lg mt-2 mb-4">
+            @if (!in_array(date('m'), [6, 7, 8, 12, 1]) || date('m') == 12 && date('d') < 20 || date('m') == 1 && date('d') > 4)
+            Feel free to drop by our lab at Linnaeus Science Park, Framtidsvägen 14, anytime between 17 and 19.<br>
             There be free fika and snacks! 🍪&nbsp;☕️
+            @else
+            Looks like we are on holiday 🤔 see you next semester!
+            @endif
         </p>
 
-        @if (env('DOORBELL_ACTIVE') && date('H') >= 17 && date('H') <= 22)
+        @if (env('DOORBELL_ACTIVE') && date('H') >= 17 && date('H') <= 22 && (!in_array(date('m'), [6, 7, 8, 12, 1]) || date('m') == 12 && date('d') < 20 || date('m') == 1 && date('d') > 4))
 
         <div class="card-actions justify-start mt-0 relative xs:w-full sm:w-full xs:flex-nowrap sm:flex-nowrap">
             @if (Request::route()->getName() != 'home')
