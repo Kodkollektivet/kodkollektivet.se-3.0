@@ -50,7 +50,7 @@
 <footer class="footer flex items-center justify-center p-4 bg-neutral w-full">
     <div class="flex items-center justify-between w-full text-neutral-content max-w-2xl mx-auto lg:max-w-7xl lg:px-6">
         <div class="items-center grid-flow-col">
-            <p>© {{ date('Y') }} - Kodkollektivet</p>
+            <p>© {{ date('Y') }} - Kodkollektivet, built by <a class="transition ease-in-out duration-200" href="/member/theAlex">theAlex</a></p>
           </div> 
           <div class="flex flex-nowrap xs:gap-2 sm:gap-2 md:gap-4 lg:gap-4 md:place-self-center md:justify-self-end">
             <a href="https://github.com/Kodkollektivet" target="_blank" class="group link link-hover transition ease-in-out duration-200 hover:no-underline" class="transition ease-in-out duration-200">
