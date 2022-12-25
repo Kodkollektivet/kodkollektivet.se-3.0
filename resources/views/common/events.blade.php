@@ -37,47 +37,138 @@
         </ul>
 
         @include('components.open-house')
+
+        <div class="flex xs:flex-col sm:flex-col md:flex-col lg:flex-row lg:items-stretch w-full">
+
+            <div class="flex flex-col xs:w-full sm:w-full md:w-full lg:w-4/6">
+
+                @if ($events->count())
+
+                @foreach ($events as $event)
+                
+                <?php $this_date = strtotime($event->date); ?>
+                <div class="card lg:card-side bg-base-100 shadow-xl border-1 border-gray-800 w-full mt-10">
+                    <figure class="lg:h-64  lg:w-1/3">
+                        <img class="lg:h-full lg:w-full object-cover" src="/public/images/item_covers/{{ isset($event->image) ? $event->image : 'default.jpg' }}" alt="Event picture">
+                    </figure>
         
-        @if ($events->count())
+                    <div class="card-body lg:h-64  lg:w-2/3">
+                      <p class="text-sm text-blue-100">{{ date('F jS, Y (l, H:i)', $this_date) }}</p>
+                      <h2 class="card-title text-gray-200">{{ $event->name }}
+                          <div class="badge border-none text-neutral bg-{{$this_date > $date ? 'info' : 'warning'}}">
+                              <small>{{$this_date > $date ? 'PLANNED' : 'PAST'}}</small>
+                          </div>
+                      </h2>
+                      <p class="text-gray-500 text-lg ">{{ substr($event->intro, 0, 120) }} [...]</p>
+                      <div class="card-actions justify-end">
+                        <a href="/event/{{ $event->link }}/?id={{ $event->id }}" class="btn btn-outline border-gray-400 text-gray-400 transition ease-in-out duration-300 hover:text-neutral hover:border-neutral hover:bg-primary xs:btn-sm xs:text-xs sm:btn-sm sm:text-sm">Read more</a>
+                      </div>
+                    </div>
+                </div>
 
-        @foreach ($events as $event)
-        <?php $this_date = strtotime($event->date); ?>
-        <div class="card lg:card-side bg-base-100 shadow-xl border-1 border-gray-800 w-full mt-10">
-            <figure class="lg:h-64  lg:w-1/3">
-                <img class="lg:h-full lg:w-full object-cover" src="/public/images/item_covers/{{ isset($event->image) ? $event->image : 'default.jpg' }}" alt="Event picture">
-            </figure>
-
-            <div class="card-body lg:h-64  lg:w-2/3">
-              <p class="text-sm text-blue-100">{{ date('F jS, Y (l, H:i)', $this_date) }}</p>
-              <h2 class="card-title text-gray-200">{{ $event->name }}
-                  <div class="badge border-none text-neutral bg-{{$this_date > $date ? 'info' : 'warning'}}">
-                      <small>{{$this_date > $date ? 'PLANNED' : 'PAST'}}</small>
-                  </div>
-              </h2>
-              <p class="text-gray-500 text-lg ">{{ substr($event->intro, 0, 120) }} [...]</p>
-              <div class="card-actions justify-end">
-                <a href="/event/{{ $event->link }}/?id={{ $event->id }}" class="btn btn-outline border-gray-400 text-gray-400 transition ease-in-out duration-300 hover:text-neutral hover:border-neutral hover:bg-primary xs:btn-sm xs:text-xs sm:btn-sm sm:text-sm">Read more</a>
-              </div>
+                @endforeach
+        
+                {{ $events->links('pagination.custom') }}
+        
+                @else
+        
+                <div class="flex justify-center items-center flex-col" style="min-height: 300px">
+        
+                    <img class="h-96  w-96 object-contain xs:mt-4 sm:mt-4 md:mt-10 lg:mt-10" src="/public/images/svg/lost.svg" alt="No items in this category.">
+            
+                    <h1 class="text-blue-200 md:mt-12 lg:mt-12 xs:text-md sm:text-md md:text-xl lg:text-xl font-mono font-bold italic md:w-2/3 lg:w-2/3 text-center">
+                        // &nbsp;We are currently populating the website; plase, bear with us 🐻
+                    </h1>
+            
+                </div>
+        
+                @endif
+        
             </div>
+
+            @php $dow   = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            $month_step = strtotime('midnight first day of this month');
+            $count_days = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
+            $today      = strtotime('today'); @endphp
+
+            <div class="xs:w-full sm:w-full md:w-full lg:w-2/6 mt-10 relative">
+                <div class="flex items-center justify-center w-full lg:pl-8 sticky top-16">
+
+                    <div class="w-full bg-base-100 rounded-xl shadow-xl border-1 border-gray-800">
+                        <div class="xs:p-6 sm:p-6 md:p-6 lg:p-4">
+                            <div class="flex items-center">
+                                <span tabindex="0" class="focus:outline-none text-base font-thin text-blue-100 pt-3">{{ date('F Y') }}, weeks {{ date('W', $month_step) }} – {{ date('W', strtotime('last day of this month')) }}</span>
+                            </div>
+                            <div class="flex items-center justify-between pt-4 overflow-x-auto">
+                                <table class="w-full">
+                                    <thead>
+                                        <tr>
+
+                                            <th>
+                                                <div class="w-full flex justify-start">
+                                                    <p class="text-sm text-center text-gray-100">W. №</p>
+                                                </div>
+                                            </th>
+
+                                            @foreach($dow as $day)
+
+                                            <th>
+                                                <div class="w-full flex justify-center">
+                                                    <p class="text-sm text-center text-gray-100">{{ $day }}</p>
+                                                </div>
+                                            </th>
+
+                                            @endforeach
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @while ($count_days)
+
+                                        <tr>
+
+                                            <td class="pt-6">
+                                                <div class=" py-2 flex w-full justify-start">
+                                                    <p class="text-base text-gray-100 font-medium">{{ date('W', $month_step) }}</p>
+                                                </div>
+                                            </td>  
+
+                                            @foreach ($dow as $day)
+
+                                            @php $is_today = $today == $month_step @endphp
+
+                                            <td class="pt-6">
+                                                <div class="{{ $is_today ? '' : 'px-2 py-2' }} flex w-full justify-center">
+
+                                                    @if ($day == date('D', $month_step) && $count_days)
+                                                    
+                                                    <p class="{{ $is_today ? 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-500 hover:bg-indigo-500 text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-indigo-700 rounded-full transition ease-in-out' : 'text-base text-gray-500 font-medium' }}">{{ date('d', $month_step) }}</p>
+
+                                                    @php $month_step += 86400;
+                                                         $count_days -= 1; @endphp
+
+                                                    @endif
+
+                                                </div>
+                                            </td>
+
+                                            @endforeach
+
+                                        </tr>
+                                        
+                                        @endwhile
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        @endforeach
-
-        {{ $events->links('pagination.custom') }}
-
-        @else
-
-        <div class="flex justify-center items-center flex-col" style="min-height: 300px">
-
-            <img class="h-96  w-96 object-contain xs:mt-4 sm:mt-4 md:mt-10 lg:mt-10" src="/public/images/svg/lost.svg" alt="No items in this category.">
-    
-            <h1 class="text-blue-200 md:mt-12 lg:mt-12 xs:text-md sm:text-md md:text-xl lg:text-xl font-mono font-bold italic md:w-2/3 lg:w-2/3 text-center">
-                // &nbsp;We are currently populating the website; plase, bear with us 🐻
-            </h1>
-    
-        </div>
-
-        @endif
-
+        
     </div>
 
 </div>

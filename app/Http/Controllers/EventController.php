@@ -42,11 +42,11 @@ class EventController extends Controller
         if (isset($type) && in_array($type, array_keys(static::$links))) {
             $return['uri']    = "events/$type";
             $return['type']   = str_replace('and', '&', str_replace('-', ' ', $type));
-            $return['events'] = DB::table('events')->where('type', static::$links[$type])->paginate(3);
+            $return['events'] = DB::table('events')->where('type', static::$links[$type])->paginate(6);
         } else {
             $return['uri']    = "events";
             $return['type']   = "all Events";
-            $return['events'] = DB::table('events')->orderBy('date', 'desc')->paginate(3);
+            $return['events'] = DB::table('events')->orderBy('date', 'desc')->paginate(6);
         }
 
         foreach ($return['events'] as &$event) {
