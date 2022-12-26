@@ -9,8 +9,10 @@ use App\Models\User;
 use App\Models\user_action;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\user_actionController;
+use App\Http\Controllers\CalendarController;
 use App\Models\Notification;
 use App\Models\event_user;
+use App\View\Components\CommonLayout;
 
 
 class EventController extends Controller
@@ -21,10 +23,12 @@ class EventController extends Controller
             'parties-and-more'             => 3
         );
 
-    public static function getTypes() {
+    public static function getTypes()
+    {
         $types = array();
 
-        foreach (static::$links as $name => $id) {
+        foreach (static::$links as $name => $id)
+        {
             $types[$id] = ucfirst(str_replace('-', ' ', $name));
         }
 
@@ -34,22 +38,24 @@ class EventController extends Controller
     public static function index($type = null)
     {
         $return = [
-            'date'   => time(),
-            'links'  => static::$links,
-            'footer' => \App\View\Components\CommonLayout::footer()
+            'links'    => static::$links,
+            'footer'   => CommonLayout::footer(),
+            'calendar' => CalendarController::index()
         ];
 
-        if (isset($type) && in_array($type, array_keys(static::$links))) {
+        if (isset($type) && in_array($type, array_keys(static::$links)))
+        {
             $return['uri']    = "events/$type";
             $return['type']   = str_replace('and', '&', str_replace('-', ' ', $type));
-            $return['events'] = DB::table('events')->where('type', static::$links[$type])->paginate(6);
+            $return['events'] = event::where('type', static::$links[$type])->paginate(6);
         } else {
             $return['uri']    = "events";
             $return['type']   = "all Events";
-            $return['events'] = DB::table('events')->orderBy('date', 'desc')->paginate(6);
+            $return['events'] = event::orderBy('date', 'desc')->paginate(6);
         }
 
-        foreach ($return['events'] as &$event) {
+        foreach ($return['events'] as &$event)
+        {
             $event->link = ItemController::prepareLink($event->name);
         }
 
@@ -57,8 +63,10 @@ class EventController extends Controller
         
     }
 
-    public function create(User $user, array $request) {
-        if ($user->position->create_events) {
+    public function create(User $user, array $request)
+    {
+        if ($user->position->create_events)
+        {
             $event = EventController::setEventColumns($user, new Event, $request);
 
             $event->user_id = $user->id;
@@ -66,8 +74,10 @@ class EventController extends Controller
 
             $event->save();
 
-            for ($i = 0; $i < 4; $i++) {
-                if (isset($request["post_image_$i"])) {
+            for ($i = 0; $i < 4; $i++)
+            {
+                if (isset($request["post_image_$i"]))
+                {
                     ItemController::imageRequestStore($event, array($request["post_image_$i"]), 'event');
                 } else {
                     break;
@@ -84,10 +94,12 @@ class EventController extends Controller
 
     public function show($name)
     {
-        if (isset($_GET) && isset($_GET['id'])) {
+        if (isset($_GET) && isset($_GET['id']))
+        {
             $event = event::find(filter_var($_GET['id'], FILTER_VALIDATE_INT));
 
-            if (isset($event)) {
+            if (isset($event))
+            {
                 $event->description = ItemController::renderCode($event->description);
 
                 return view('common.item')->with([
@@ -99,7 +111,7 @@ class EventController extends Controller
                                     'action'    => 'updated'
                                 ])->orderBy('created_at', 'desc')->get(),
                     'type'    => EventController::getTypes()[$event->type],
-                    'footer'  => \App\View\Components\CommonLayout::footer()
+                    'footer'  => CommonLayout::footer()
                 ]);
             }
         }
@@ -111,7 +123,8 @@ class EventController extends Controller
     {
         $event = event::find($request->event_id);
 
-        if (isset($event) && !EventController::eventUserExists($user->id, $event->id)) {
+        if (isset($event) && !EventController::eventUserExists($user->id, $event->id))
+        {
             event_user::create(['user_id' => $user->id, 'event_id' => $event->id]);
 
             $action = user_action::create(['user_id' => $user->id, 'item_id' => $event->id, 'item_type' => 'event', 'action' => 'signed up for']);
@@ -140,8 +153,10 @@ class EventController extends Controller
     {
         $event = event::find($request->event_id);
 
-        if (isset($event)) {
-            if (EventController::eventUserExists($user->id, $event->id)) {
+        if (isset($event))
+        {
+            if (EventController::eventUserExists($user->id, $event->id))
+            {
                 event_user::where(['user_id' => $user->id, 'event_id' => $event->id])->delete();
 
                 $action = user_action::create(['user_id' => $user->id, 'item_id' => $event->id, 'item_type' => 'event', 'action' => 'is no longer planning to attend']);
@@ -180,17 +195,21 @@ class EventController extends Controller
                 </button>";
     }
 
-    public function hasPermission(User $user, Event $event, string $permission) {
+    public function hasPermission(User $user, Event $event, string $permission)
+    {
         return isset($user->position) && ($user->position->$permission || $user->id == $event->user_id) ? $event : null;
     }
 
-    public function update(User $user, array $request) {
+    public function update(User $user, array $request)
+    {
         $event = event::find($request['id']);
 
-        if (isset($event) && EventController::hasPermission($user, $event, 'edit_events')) {
+        if (isset($event) && EventController::hasPermission($user, $event, 'edit_events'))
+        {
             $event = EventController::setEventColumns($user, $event, $request);
 
-            if (isset($request['image'])) {
+            if (isset($request['image']))
+            {
                 $event->image = ItemController::imageRequestStore($event, array($request['image']), 'image');
                 ImageController::logDeleted($user->id, $event->author->id, "event_covers/$event->image");
             }
@@ -201,8 +220,10 @@ class EventController extends Controller
 
             $image_lim = 5 - (isset($event->images) ? $event->images->count() : 0);
 
-            for ($i = 0; $i < $image_lim; $i++) {
-                if (isset($request["post_image_$i"])) {
+            for ($i = 0; $i < $image_lim; $i++)
+            {
+                if (isset($request["post_image_$i"]))
+                {
                     ItemController::imageRequestStore($event, array($request["post_image_$i"]), 'event');
                 } else {
                     break;
@@ -215,10 +236,12 @@ class EventController extends Controller
         }
     }
 
-    public function delete(User $user, Request $request) {
+    public function delete(User $user, Request $request)
+    {
         $event = event::find($request->id);
 
-        if (isset($event) && EventController::hasPermission($user, $event, 'delete_events')) {
+        if (isset($event) && EventController::hasPermission($user, $event, 'delete_events'))
+        {
             $action    = user_actionController::create($user->id, $event->id, 'event', 'deleted');
             $author    = $event->author;
             $deleteLog = \App\Models\DeleteLog::create([
@@ -241,15 +264,18 @@ class EventController extends Controller
 
             $deleteLog->save();
 
-            if (isset($event->image)) {
+            if (isset($event->image))
+            {
                 ImageController::logDeleted($user->id, $author->id, "item_covers/$event->image", $log_id = $deleteLog->id);
 
                 $delete = new Request(['images' => [$event->image], 'type' => 'item_cover']);
                 ImageController::delete($delete);
             }
 
-            if (isset($event->images)) {
-                foreach ($event->images as $image) {
+            if (isset($event->images))
+            {
+                foreach ($event->images as $image)
+                {
                     ImageController::logDeleted($user->id, $author->id, "events/$image->src", $log_id = $deleteLog->id);
                 }
 
@@ -264,12 +290,14 @@ class EventController extends Controller
 
     }
 
-    private function setEventColumns(User $user, Event $event, array $request) {        
+    private function setEventColumns(User $user, Event $event, array $request)
+    {        
         $request['description'] = ItemController::normalizeHTML($request['description']);
 
         $columns = array('name', 'intro', 'description', 'place', 'date');
 
-        foreach ($request as $key => $value) {
+        foreach ($request as $key => $value)
+        {
             isset($value) && in_array($key, $columns) && $event->$key != $value ? $event->$key = strip_tags($value) : null;
         }
 

@@ -18,10 +18,13 @@
 <div class="b-32 pt-20 from-base-300 to-base-100 via-neutral bg-gradient-to-br border-t-2 border-b-2 border-gray-800 col-start-1 row-start-1 h-auto w-full">
     <article class="prose m-auto">
         <h1 class="mb-4 mt-10 relative">{{ $item->name }}
-        @if (isset($date))
+
+        @if (!$post)
+
         <div class="relative -top-1 badge border-none text-neutral bg-{{$this_date > $date ? 'info' : 'warning'}}">
             <small>{{$this_date > $date ? 'PLANNED' : 'PAST'}}</small>
         </div>
+        
         @endif
 
         @if (Auth::check() && $item->author->id != Auth::user()->id)

@@ -55,8 +55,8 @@
                     <div class="card-body lg:h-64  lg:w-2/3">
                       <p class="text-sm text-blue-100">{{ date('F jS, Y (l, H:i)', $this_date) }}</p>
                       <h2 class="card-title text-gray-200">{{ $event->name }}
-                          <div class="badge border-none text-neutral bg-{{$this_date > $date ? 'info' : 'warning'}}">
-                              <small>{{$this_date > $date ? 'PLANNED' : 'PAST'}}</small>
+                          <div class="badge border-none text-neutral bg-{{$this_date > time() ? 'info' : 'warning'}}">
+                              <small>{{$this_date > time() ? 'PLANNED' : 'PAST'}}</small>
                           </div>
                       </h2>
                       <p class="text-gray-500 text-lg ">{{ substr($event->intro, 0, 120) }} [...]</p>
@@ -85,36 +85,31 @@
                 @endif
         
             </div>
-
-            @php $dow   = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-            $month_step = strtotime('midnight first day of this month');
-            $count_days = cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y'));
-            $today      = strtotime('today'); @endphp
-
+  
             <div class="xs:w-full sm:w-full md:w-full lg:w-2/6 mt-10 relative">
-                <div class="flex items-center justify-center w-full lg:pl-8 sticky top-16">
+                <div class="flex items-center justify-center w-full lg:pl-6 sticky top-16">
 
                     <div class="w-full bg-base-100 rounded-xl shadow-xl border-1 border-gray-800">
-                        <div class="xs:p-6 sm:p-6 md:p-6 lg:p-4">
+                        <div class="p-8">
                             <div class="flex items-center">
-                                <span tabindex="0" class="focus:outline-none text-base font-thin text-blue-100 pt-3">{{ date('F Y') }}, weeks {{ date('W', $month_step) }} – {{ date('W', strtotime('last day of this month')) }}</span>
+                                <span tabindex="0" class="text-sm text-blue-100">{{ date('F Y') }}, weeks {{ date('W', $calendar->month_start) }} – {{ date('W', strtotime('last day of this month')) }}</span>
                             </div>
-                            <div class="flex items-center justify-between pt-4 overflow-x-auto">
+                            <div class="flex items-center justify-between pt-3 overflow-x-auto">
                                 <table class="w-full">
                                     <thead>
                                         <tr>
 
                                             <th>
                                                 <div class="w-full flex justify-start">
-                                                    <p class="text-sm text-center text-gray-100">W. №</p>
+                                                    <p class="text-sm text-center text-gray-200">W. №</p>
                                                 </div>
                                             </th>
 
-                                            @foreach($dow as $day)
+                                            @foreach($calendar->dow as $day)
 
                                             <th>
-                                                <div class="w-full flex justify-center">
-                                                    <p class="text-sm text-center text-gray-100">{{ $day }}</p>
+                                                <div class="w-full flex {{ $day == 'Sun' ? 'justify-end' : 'justify-center' }}">
+                                                    <p class="text-sm text-center text-gray-200">{{ $day }}</p>
                                                 </div>
                                             </th>
 
@@ -124,29 +119,39 @@
                                     </thead>
                                     <tbody>
 
-                                        @while ($count_days)
+                                        @while ($calendar->count_days)
 
                                         <tr>
 
-                                            <td class="pt-6">
+                                            <td class="pt-3">
                                                 <div class=" py-2 flex w-full justify-start">
-                                                    <p class="text-base text-gray-100 font-medium">{{ date('W', $month_step) }}</p>
+                                                    <p class="text-base text-gray-400 font-medium">{{ date('W', $calendar->month_start) }}</p>
                                                 </div>
                                             </td>  
 
-                                            @foreach ($dow as $day)
+                                            @foreach ($calendar->dow as $day)
 
-                                            @php $is_today = $today == $month_step @endphp
+                                            @php $is_today = $calendar->today == $calendar->month_start @endphp
 
-                                            <td class="pt-6">
-                                                <div class="{{ $is_today ? '' : 'px-2 py-2' }} flex w-full justify-center">
+                                            <td class="pt-3">
+                                                <div class="{{ $is_today ? 'px-0' : 'py-2' }} flex w-full {{ $day == 'Sun' ? 'justify-end pr-0' : 'justify-center px-2' }}">
 
-                                                    @if ($day == date('D', $month_step) && $count_days)
-                                                    
-                                                    <p class="{{ $is_today ? 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-500 hover:bg-indigo-500 text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-indigo-700 rounded-full transition ease-in-out' : 'text-base text-gray-500 font-medium' }}">{{ date('d', $month_step) }}</p>
+                                                    @if ($day == date('D', $calendar->month_start) && $calendar->count_days)
 
-                                                    @php $month_step += 86400;
-                                                         $count_days -= 1; @endphp
+                                                        @if (!isset($calendar->events[$calendar->month_start]))
+                                                        
+                                                        <p onclick="toggleDetails()" class="{{ $is_today ? 'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 focus:bg-indigo-500 hover:bg-indigo-500 text-base w-8 h-8 flex items-center justify-center font-medium text-white bg-indigo-700 rounded-full transition ease-in-out' : 'text-base text-gray-500 font-medium' }}">{{ date('d', $calendar->month_start) }}</p>
+
+                                                        @else
+
+                                                        @php $event = $calendar->events[$calendar->month_start]; @endphp
+
+                                                        <p onclick="toggleDetails($(this))" title="{{ $event->name }}" data-link="/event/{{ $event->name }}/?id={{ $event->id }}" data-intro="{{ $event->intro }}" data-date="{{ date('F jS, Y (l, H:i)', strtotime($event->date)) }}" class="focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer {{ key($event) >= $calendar->today ? 'focus:ring-cyan-700 focus:bg-info hover:bg-info bg-cyan-700' : 'focus:ring-yellow-700 focus:bg-yellow-500 hover:bg-yellow-500 bg-yellow-700' }} text-base w-8 h-8 flex items-center justify-center font-medium text-white rounded-full transition ease-in-out">{{ date('d', $calendar->month_start) }}</p>
+
+                                                        @endif
+
+                                                    @php $calendar->month_start += 86400;
+                                                         $calendar->count_days  -= 1; @endphp
 
                                                     @endif
 
@@ -163,6 +168,15 @@
                                 </table>
                             </div>
                         </div>
+
+                        <a href="" id="event-view" class="border-t-2 border-gray-800 opacity-0 h-0 transition ease-in-out duration-200">
+                            <div>
+                                <p class="text-sm text-blue-100 mb-2"></p>
+                                <p class="text-lg font-medium text-gray-200"></p>
+                                <p class="text-sm pt-2 text-gray-500 mt-2"></p>
+                            </div>
+                        </a>
+
                     </div>
                 </div>
             </div>
@@ -172,6 +186,34 @@
     </div>
 
 </div>
+
+<script>
+
+    function toggleDetails(e = null) {
+        if (e) {
+            $('#event-view').attr('href', e.data('link'))
+
+            $('#event-view div').addClass('p-8')
+
+            $('#event-view p:nth-child(1)').text(e.data('date'))
+            $('#event-view p:nth-child(2)').text(e.attr('title'))
+            $('#event-view p:nth-child(3)').text(e.data('intro'))
+
+            setTimeout(() => {
+                $('#event-view').removeClass('opacity-0').removeClass('h-0')
+            }, 10)
+        } else {
+            $('#event-view').addClass('opacity-0').addClass('h-0')
+            $('#event-view div').removeClass('p-8')
+            $('#event-view').attr('href', '')
+
+            $('#event-view p').each(function () {
+                $(this).text('')
+            })
+        }
+    }
+
+</script>
 
 @endsection
 
