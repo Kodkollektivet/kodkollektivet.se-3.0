@@ -1,7 +1,7 @@
 @if ($paginator->hasPages())
 
-    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex items-center justify-between">
-        <ul class="menu relative mt-10 xs:w-full sm:w-full xs:menu-vertical sm:menu-vertical md:menu-horizontal lg:menu-horizontal bg-base-100 rounded-box shadow-xl border-1 border-gray-800 ">
+    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex xs:self-center sm:self-center items-center justify-between">
+        <ul class="menu relative mt-10 menu-horizontal bg-base-100 rounded-box shadow-xl border-1 border-gray-800 max-w-full overflow-scroll">
 
             @if ($paginator->onFirstPage())
             <li aria-disabled="true" aria-label="{{ __('pagination.previous') }}">

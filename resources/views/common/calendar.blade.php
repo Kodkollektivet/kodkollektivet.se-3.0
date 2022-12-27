@@ -9,7 +9,7 @@
 
         @include('components.events-menu')
 
-        <div class="grid grid-cols-3 gap-3 mt-10">
+        <div class="grid lg:grid-cols-3 gap-3 mt-10">
             @while (date('Y', $calendar->month_start) == date('Y'))
 
             <div class="w-full bg-base-100 rounded-xl shadow-xl border-1 border-gray-800">
@@ -24,7 +24,7 @@
     
                                     <th>
                                         <div class="w-full flex justify-start">
-                                            <p class="text-sm text-center text-gray-200">W. №</p>
+                                            <p class="text-sm text-center text-gray-200">W. <span class="xs:hidden sm:hidden">№</span></p>
                                         </div>
                                     </th>
     
@@ -128,8 +128,7 @@
         if (e) {
             let offset = e.offset()
 
-            $('#event-view').css('top', offset.top + 20)
-            $('#event-view').css('left', offset.left + 20)
+            $('#event-view').css('top', offset.top + 20).css('left', offset.left + 20)
 
             $('#event-view a').attr('href', e.data('link'))
 
@@ -140,8 +139,12 @@
             $('#event-view p:nth-child(3)').text(e.data('intro'))
 
             setTimeout(() => {
-                $('#event-view').removeClass('opacity-0').removeClass('h-0')
-            }, 10)
+                $('#event-view').offset().left + $('#event-view').width() > $( window ).width() ? $('#event-view').css('left', $( window ).width() / 2) : null
+
+                setTimeout(() => {
+                    $('#event-view').removeClass('opacity-0').removeClass('h-0')
+                }, 10)
+            }, 1)
         } else {
             $('#event-view').addClass('opacity-0').addClass('h-0')
             $('#event-view div').removeClass('p-8')

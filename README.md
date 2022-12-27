@@ -115,7 +115,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
     - Link to create event on click
     - Flip through months in widget
     - Handle multiple events in one day
-    - Mobile view
+    - Mobile view ✅
 8. Think about spam
 9. Sponsors listing ✅
 10. Former sponsors / other collaborators

@@ -15,7 +15,7 @@
 
                             <th>
                                 <div class="w-full flex justify-start">
-                                    <p class="text-sm text-center text-gray-200">W. №</p>
+                                    <p class="text-sm text-center text-gray-200">W. <span class="xs:hidden sm:hidden">№</span></p>
                                 </div>
                             </th>
 

@@ -14586,9 +14586,6 @@ body[dir="rtl"] .checkbox:checked,
 .top-12 {
   top: 3rem;
 }
-.top-16 {
-  top: 4rem;
-}
 .top-10 {
   top: 2.5rem;
 }
@@ -14609,6 +14606,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .bottom-6 {
   bottom: 1.5rem;
+}
+.top-16 {
+  top: 4rem;
 }
 .-bottom-1 {
   bottom: -0.25rem;
@@ -14786,6 +14786,9 @@ body[dir="rtl"] .checkbox:checked,
 .mb-16 {
   margin-bottom: 4rem;
 }
+.-mr-1 {
+  margin-right: -0.25rem;
+}
 .ml-8 {
   margin-left: 2rem;
 }
@@ -14794,12 +14797,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .mb-1 {
   margin-bottom: 0.25rem;
-}
-.-mr-1 {
-  margin-right: -0.25rem;
-}
-.-mr-2 {
-  margin-right: -0.5rem;
 }
 .block {
   display: block;
@@ -14867,11 +14864,11 @@ body[dir="rtl"] .checkbox:checked,
 .h-40 {
   height: 10rem;
 }
-.h-3 {
-  height: 0.75rem;
-}
 .h-60 {
   height: 15rem;
+}
+.h-3 {
+  height: 0.75rem;
 }
 .h-screen {
   height: 100vh;
@@ -14973,9 +14970,6 @@ body[dir="rtl"] .checkbox:checked,
 .w-48 {
   width: 12rem;
 }
-.w-4\/6 {
-  width: 66.666667%;
-}
 .min-w-full {
   min-width: 100%;
 }
@@ -14993,6 +14987,9 @@ body[dir="rtl"] .checkbox:checked,
 }
 .max-w-7xl {
   max-width: 80rem;
+}
+.max-w-full {
+  max-width: 100%;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -15250,11 +15247,11 @@ body[dir="rtl"] .checkbox:checked,
 .rounded-full {
   border-radius: 9999px;
 }
-.rounded {
-  border-radius: 0.25rem;
-}
 .rounded-lg {
   border-radius: 0.5rem;
+}
+.rounded {
+  border-radius: 0.25rem;
 }
 .rounded-2xl {
   border-radius: 1rem;
@@ -15671,6 +15668,9 @@ body[dir="rtl"] .checkbox:checked,
 .pt-3 {
   padding-top: 0.75rem;
 }
+.pt-2 {
+  padding-top: 0.5rem;
+}
 .pt-0 {
   padding-top: 0px;
 }
@@ -15685,9 +15685,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .pl-1 {
   padding-left: 0.25rem;
-}
-.pt-2 {
-  padding-top: 0.5rem;
 }
 .pb-5 {
   padding-bottom: 1.25rem;
@@ -15765,10 +15762,6 @@ body[dir="rtl"] .checkbox:checked,
   font-size: 0.75rem;
   line-height: 1rem;
 }
-.text-5xl {
-  font-size: 3rem;
-  line-height: 1;
-}
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -15776,6 +15769,10 @@ body[dir="rtl"] .checkbox:checked,
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
 }
 .text-2xl {
   font-size: 1.5rem;
@@ -16727,11 +16724,6 @@ iframe.Discord {
 
 .hover\:brightness-90:hover {
   --tw-brightness: brightness(.9);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.hover\:brightness-105:hover {
-  --tw-brightness: brightness(1.05);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
@@ -18346,6 +18338,10 @@ iframe.Discord {
     row-gap: 4rem;
   }
 
+  .sm\:self-center {
+    align-self: center;
+  }
+
   .sm\:rounded-full {
     border-radius: 9999px;
   }
@@ -18943,10 +18939,6 @@ iframe.Discord {
     position: absolute;
   }
 
-  .lg\:relative {
-    position: relative;
-  }
-
   .lg\:sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -19022,10 +19014,6 @@ iframe.Discord {
     margin-left: 1rem;
   }
 
-  .lg\:-mr-1 {
-    margin-right: -0.25rem;
-  }
-
   .lg\:block {
     display: block;
   }
@@ -19094,12 +19082,6 @@ iframe.Discord {
     width: 14rem;
   }
 
-  .lg\:w-max {
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-  }
-
   .lg\:max-w-7xl {
     max-width: 80rem;
   }
@@ -19154,6 +19136,10 @@ iframe.Discord {
 
   .lg\:gap-4 {
     gap: 1rem;
+  }
+
+  .lg\:gap-3 {
+    gap: 0.75rem;
   }
 
   .lg\:gap-x-8 {
@@ -20069,6 +20055,10 @@ iframe.Discord {
 
   .xs\:gap-2 {
     gap: 0.5rem;
+  }
+
+  .xs\:self-center {
+    align-self: center;
   }
 
   .xs\:rounded-full {
