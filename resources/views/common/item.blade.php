@@ -13,10 +13,21 @@
                 padding: 0 24px;    
             }        
         }
+
+        article {
+            max-width: unset !important;
+        }
 </style>
 
 <div class="b-32 pt-20 from-base-300 to-base-100 via-neutral bg-gradient-to-br border-t-2 border-b-2 border-gray-800 col-start-1 row-start-1 h-auto w-full">
-    <article class="prose m-auto">
+
+    @if (!$post)
+
+    <div class="max-w-2xl mx-auto pt-10 pb-24 px-4 flex items-center sm:px-6 sm:py-32 lg:max-w-7xl lg:pt-4 lg:pb-32 xs:flex-col sm:flex-col md:flex-col lg:flex-row lg:items-stretch w-full">
+
+    @endif
+    
+    <article class="prose m-0 lg:w-4/6">
         <h1 class="mb-4 mt-10 relative">{{ $item->name }}
 
         @if (!$post)
@@ -331,6 +342,15 @@
         @endif
 
     </article>
+
+    @if (!$post)
+
+        <div class="xs:w-full sm:w-full md:w-full lg:w-2/6 relative mt-10">
+            @include('components.month')
+        </div>
+    </div>
+    
+    @endif
 
     <div class="pt-10">
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

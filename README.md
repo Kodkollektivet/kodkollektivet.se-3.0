@@ -110,11 +110,12 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 7. Event calendar ⚠️
     - Current month widget ✅
     - Current year view ✅
-    - Widget to single event
+    - Widget to single event ✅
     - Export calendar for admins
     - Link to create event on click
     - Flip through months in widget
     - Handle multiple events in one day
+    - Mobile view
 8. Think about spam
 9. Sponsors listing ✅
 10. Former sponsors / other collaborators

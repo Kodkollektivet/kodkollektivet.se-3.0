@@ -103,15 +103,16 @@ class EventController extends Controller
                 $event->description = ItemController::renderCode($event->description);
 
                 return view('common.item')->with([
-                    'date'    => time(),
-                    'item'    => $event,
-                    'updates' => \App\Models\user_action::where([
+                    'date'     => time(),
+                    'item'     => $event,
+                    'updates'  => \App\Models\user_action::where([
                                     'item_id'   => $event->id,
                                     'item_type' => 'event',
                                     'action'    => 'updated'
                                 ])->orderBy('created_at', 'desc')->get(),
-                    'type'    => EventController::getTypes()[$event->type],
-                    'footer'  => CommonLayout::footer()
+                    'type'     => EventController::getTypes()[$event->type],
+                    'footer'   => CommonLayout::footer(),
+                    'calendar' => CalendarController::index()
                 ]);
             }
         }

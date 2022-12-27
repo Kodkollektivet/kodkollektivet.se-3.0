@@ -14973,6 +14973,9 @@ body[dir="rtl"] .checkbox:checked,
 .w-48 {
   width: 12rem;
 }
+.w-4\/6 {
+  width: 66.666667%;
+}
 .min-w-full {
   min-width: 100%;
 }
@@ -19089,6 +19092,12 @@ iframe.Discord {
 
   .lg\:w-56 {
     width: 14rem;
+  }
+
+  .lg\:w-max {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
   }
 
   .lg\:max-w-7xl {
