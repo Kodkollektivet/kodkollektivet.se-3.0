@@ -107,7 +107,14 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 4. Minimise logic in templates
 5. Repetitive HTML / JS to reusable components
 6. Feature latest posts and events in /origins ✅
-7. Event calendar ✅
+7. Event calendar ⚠️
+    - Current month widget ✅
+    - Current year view ✅
+    - Widget to single event
+    - Export calendar for admins
+    - Link to create event on click
+    - Flip through months in widget
+    - Handle multiple events in one day
 8. Think about spam
 9. Sponsors listing ✅
 10. Former sponsors / other collaborators

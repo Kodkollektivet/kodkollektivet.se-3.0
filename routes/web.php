@@ -40,6 +40,10 @@ Route::get('/privacy-policy', function () {
     return CommonLayout::policy();
 })->name('privacy-policy');
 
+Route::get('/event-calendar', function () {
+    return \App\Http\Controllers\CalendarController::year();
+})->name('event-calendar');
+
 
 Route::prefix('events')->group(function () {
     Route::get('/', function ($type = null) {

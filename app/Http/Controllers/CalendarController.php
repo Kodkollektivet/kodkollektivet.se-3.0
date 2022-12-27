@@ -8,9 +8,9 @@ use App\Models\event;
 
 class CalendarController extends Controller
 {
-    public function index()
+    public function index(string $start = 'midnight first day of this month')
     {
-        $month_start = strtotime('midnight first day of this month');
+        $month_start = strtotime($start);
         $events      = array();
 
         foreach (event::where('date', '>=', date('Y-m-d', $month_start))->get() as &$event)
@@ -22,9 +22,18 @@ class CalendarController extends Controller
         return (object) [
             'dow'         => ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
             'month_start' => $month_start,
-            'count_days'  => cal_days_in_month(CAL_GREGORIAN, date('m'), date('Y')),
             'today'       => strtotime('today'),
             'events'      => $events
         ];
+    }
+
+    public function year()
+    {
+        return view('common.calendar')->with([
+            'footer'   => \App\View\Components\CommonLayout::footer(),
+            'calendar' => CalendarController::index('first day of January '.date('Y')),
+            'links'    => \App\Http\Controllers\EventController::$links,
+            'uri'      => 'event-calendar'
+        ]);
     }
 }

@@ -47,11 +47,11 @@ class EventController extends Controller
         {
             $return['uri']    = "events/$type";
             $return['type']   = str_replace('and', '&', str_replace('-', ' ', $type));
-            $return['events'] = event::where('type', static::$links[$type])->paginate(6);
+            $return['events'] = event::where('type', static::$links[$type])->paginate(5);
         } else {
             $return['uri']    = "events";
             $return['type']   = "all Events";
-            $return['events'] = event::orderBy('date', 'desc')->paginate(6);
+            $return['events'] = event::orderBy('date', 'desc')->paginate(5);
         }
 
         foreach ($return['events'] as &$event)

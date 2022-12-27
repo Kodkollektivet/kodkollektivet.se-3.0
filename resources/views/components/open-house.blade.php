@@ -2,7 +2,10 @@
     <div class="card-body">
         <h2 class="card-title text-2xl mb-0" id="api-response">Open house every Tuesday</h2>
         <p class="xs:text-md sm:text-md md:text-lg lg:text-lg mt-2 mb-4">
-            @if (!in_array(date('m'), [6, 7, 8, 12, 1]) || date('m') == 12 && date('d') < 20 || date('m') == 1 && date('d') > 4)
+
+            @php $open = !in_array(date('m'), [6, 7, 8, 12, 1]) || (date('m') == 12 && date('d') < 20) || (date('m') == 1 && date('d') > 4); @endphp
+
+            @if ($open)
             Feel free to drop by our lab at Linnaeus Science Park, Framtidsvägen 14, anytime between 17 and 19.<br>
             There be free fika and snacks! 🍪&nbsp;☕️
             @else
@@ -10,7 +13,7 @@
             @endif
         </p>
 
-        @if (env('DOORBELL_ACTIVE') && date('H') >= 17 && date('H') <= 22 && (!in_array(date('m'), [6, 7, 8, 12, 1]) || date('m') == 12 && date('d') < 20 || date('m') == 1 && date('d') > 4))
+        @if (env('DOORBELL_ACTIVE') && date('H') >= 17 && date('H') <= 22 && ($open))
 
         <div class="card-actions justify-start mt-0 relative xs:w-full sm:w-full xs:flex-nowrap sm:flex-nowrap">
             @if (Request::route()->getName() != 'home')
