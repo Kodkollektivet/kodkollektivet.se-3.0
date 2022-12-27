@@ -14795,6 +14795,12 @@ body[dir="rtl"] .checkbox:checked,
 .mb-1 {
   margin-bottom: 0.25rem;
 }
+.-mr-1 {
+  margin-right: -0.25rem;
+}
+.-mr-2 {
+  margin-right: -0.5rem;
+}
 .block {
   display: block;
 }
@@ -18934,6 +18940,10 @@ iframe.Discord {
     position: absolute;
   }
 
+  .lg\:relative {
+    position: relative;
+  }
+
   .lg\:sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -19007,6 +19017,10 @@ iframe.Discord {
 
   .lg\:ml-4 {
     margin-left: 1rem;
+  }
+
+  .lg\:-mr-1 {
+    margin-right: -0.25rem;
   }
 
   .lg\:block {
@@ -19111,6 +19125,10 @@ iframe.Discord {
 
   .lg\:justify-end {
     justify-content: flex-end;
+  }
+
+  .lg\:justify-between {
+    justify-content: space-between;
   }
 
   .lg\:gap-6 {
