@@ -181,6 +181,8 @@
             </div>
           </div>
 
+          @if (!$user->company)
+
           <div class="block xs:hidden sm:hidden" aria-hidden="true">
             <div class="py-5"></div>
           </div>
@@ -299,6 +301,8 @@
                 </div>
             </div>
           </div>  
+
+          @endif
 
           <div class="block xs:hidden sm:hidden" aria-hidden="true">
             <div class="py-5"></div>
