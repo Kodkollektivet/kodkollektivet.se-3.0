@@ -41,7 +41,7 @@
             <div class="flex flex-col xs:pl-4 sm:pl-4 md:pl-16 lg:pl-16 md:pr-6 lg:pr-6 w-max">
                 <div class="flex h-8 flex-row">
                     <a id="user-wrapper" class="flex" href="/member/{{ $user->username }}">
-                        <h2 class="text-lg font-semibold text-blue-100"> {{ $user->username }}</h2>
+                        <h2 class="text-lg font-semibold text-blue-100 flex"> {{ $user->username }} {!! $user->company && $user->role_id == 2 ? '<svg class="w-5 ml-2 fill-info" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>' : ($user->company ? '<svg class="w-5 ml-2 fill-warning" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32z"/></svg>' : null) !!}</h2>
                         {!! $user->role_id == 5 ? '<div class="badge badge-error gap-2 ml-2 uppercase text-xs mt-1">Banned</div>' : '' !!}
                     </a>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="flex flex-row xs:pb-2 sm:pb-2">
                         <svg height="14" class="fill-gray-500 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M414.8 40.79L286.8 488.8C281.9 505.8 264.2 515.6 247.2 510.8C230.2 505.9 220.4 488.2 225.2 471.2L353.2 23.21C358.1 6.216 375.8-3.624 392.8 1.232C409.8 6.087 419.6 23.8 414.8 40.79H414.8zM518.6 121.4L630.6 233.4C643.1 245.9 643.1 266.1 630.6 278.6L518.6 390.6C506.1 403.1 485.9 403.1 473.4 390.6C460.9 378.1 460.9 357.9 473.4 345.4L562.7 256L473.4 166.6C460.9 154.1 460.9 133.9 473.4 121.4C485.9 108.9 506.1 108.9 518.6 121.4V121.4zM166.6 166.6L77.25 256L166.6 345.4C179.1 357.9 179.1 378.1 166.6 390.6C154.1 403.1 133.9 403.1 121.4 390.6L9.372 278.6C-3.124 266.1-3.124 245.9 9.372 233.4L121.4 121.4C133.9 108.9 154.1 108.9 166.6 121.4C179.1 133.9 179.1 154.1 166.6 166.6V166.6z"/></svg>
                         <div id="role-text" class="text-xs text-gray-400/80 hover:text-gray-400 capitalize">
-                            {{ $user->role->name }}
+                            {{ !$user->company ? $user->role->name : 'Company' }}
                             {{ isset($user->position_id) ? ' / ' . $user->position->name : ($user->role_id == 1 ? ' / Unspecified' : '') }}
                         </div>
                     </div>
