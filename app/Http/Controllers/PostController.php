@@ -249,10 +249,9 @@ class PostController extends Controller
     }
 
     public function hasPermission(User $user, Post $post, string $permission) {
-
-        return $user->id == $post->user_id && $user->role->post && 
+        return $user->id == $post->user_id && ($user->role->post || 
                             (!isset($post->community) || (isset($user->position) && $user->position->$permission)) ||
-                            (isset($user->position) && $user->position->edit_posts) ? $post : null;
+                            (isset($user->position) && $user->position->edit_posts)) ? $post : null;
     }
 
     private function setTags(Post $post, array $tags) {

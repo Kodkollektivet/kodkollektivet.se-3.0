@@ -28,7 +28,29 @@
                 <a id="nav-blog" class="transition ease-in-out duration-200 hover:text-teal-200 xs:hidden" href="/blog">Blog</a>
             </li>
 
-            @if (isset(Auth::user()->position_id) && (Auth::user()->position->create_events || Auth::user()->position->edit_social))
+            @if (Auth::check() && Auth::user()->company && Auth::user()->position_id == 16)
+
+            <li class="xs:hidden" tabindex="4">
+                <a class="transition ease-in-out duration-200 hover:text-teal-200">
+                    Company
+                    <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
+                </a>
+                <ul tabindex="4" class="menu menu-compact dropdown-content p-2 shadow bg-base-100 rounded-box ">
+
+                    <li class="w-full">
+                        <a href="/item-create/event" class="transition ease-in-out duration-200 hover:text-teal-200">Create event</a>
+                    </li>
+
+                    <li class="w-full">
+                        <a href="/item-create/post/?comm=1" class="transition ease-in-out duration-200 hover:text-teal-200">Community post</a>
+                    </li>
+        
+                </ul>
+            </li>
+
+            @endif
+
+            @if (Auth::check() && !Auth::user()->company && isset(Auth::user()->position_id) && (Auth::user()->position->create_events || Auth::user()->position->edit_social))
 
             <li class="xs:hidden" tabindex="4">
                 <a class="transition ease-in-out duration-200 hover:text-teal-200">
@@ -189,7 +211,7 @@
             <a id="nav-blog" class="transition ease-in-out duration-200 text-blue-200 hover:text-teal-200" href="/blog">Blog</a>
         </li>
 
-        @if (Auth::check())
+        @if (Auth::check() && !Auth::user()->company)
         
             @if (isset(Auth::user()->position_id) && (Auth::user()->position->create_events || Auth::user()->position->edit_socia))
         
@@ -223,6 +245,22 @@
 
         
             @endif
+
+        @endif
+
+        @if (Auth::check() && Auth::user()->company && Auth::user()->position_id == 16)
+    
+            <li class="w-full">
+                <a class="text-teal-200 uppercase cursor-default hover:text-teal-200 hover:bg-transparent ">Company:</a>
+            </li>
+    
+            <li class="w-full px-4">
+                <a href="/item-create/event" class="transition ease-in-out duration-200 text-blue-200 hover:text-teal-200">Create event</a>
+            </li>
+
+            <li class="w-full px-4">
+                <a href="/item-create/post/?comm=1" class="transition ease-in-out duration-200 text-blue-200 hover:text-teal-200">Community post</a>
+            </li>
 
         @endif
     

@@ -113,6 +113,7 @@ class UserController extends Controller
 
         if ($user->role_id == 4 && $key == $user->verification) {
             $user->role_id = 2;
+            $user->company ? $user->position_id = 16 : null;
             $user->email_verified_at = time();
             $user->save();
 
