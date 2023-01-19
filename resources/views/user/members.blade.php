@@ -30,6 +30,9 @@
                     </li>
                     @endforeach
                     <li>
+                        <a href="{{ route('members', ['role' => 'Company']) }}" class="transition ease-in-out duration-300 hover:text-blue-100 @if (Route::current()->role == 'Company') active @endif">Company ({{ $cmpn_total }})</a>
+                    </li>
+                    <li>
                         <a href="{{ route('members', ['role' => 'open-positions']) }}" class="transition ease-in-out duration-300 hover:text-blue-100 @if (Route::current()->role == 'open-positions') active @endif">Open positions ({{ $op_total }})</a>
                     </li>
                 </ul>
