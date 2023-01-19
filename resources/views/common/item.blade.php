@@ -19,7 +19,7 @@
         }
 </style>
 
-<div class="b-32 pt-20 from-base-300 to-base-100 via-neutral bg-gradient-to-br border-t-2 border-b-2 border-gray-800 col-start-1 row-start-1 h-auto w-full">
+<div class="b-32 pt-20 from-base-300 to-base-100 via-neutral bg-gradient-to-br border-t-2 border-b-2 border-gray-800 col-start-1 row-start-1 h-auto w-full flex flex-col items-center">
 
     @if (!$post)
 
@@ -352,7 +352,7 @@
     
     @endif
 
-    <div class="pt-10">
+    <div class="pt-10 w-full">
         <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
             <defs>

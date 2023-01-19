@@ -36,4 +36,8 @@ class CalendarController extends Controller
             'uri'      => 'event-calendar'
         ]);
     }
+
+    public function export() {
+        $calendar = CalendarController::index('first day of January '.date('Y'));
+    }
 }
