@@ -47,6 +47,14 @@
                                 name="password_confirmation" required />
             </div>
 
+            <!-- I'm a company -->
+            <div class="block mt-4">
+                <label for="company" class="inline-flex items-center">
+                    <input id="company" type="checkbox" class="rounded border-gray-300 text-blue-400 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="company">
+                    <span class="ml-2 text-sm text-base-content">{{ __('I\'m a company') }}</span>
+                </label>
+            </div>
+
             <div class="flex items-center justify-end mt-4 actions">
                 <a class="underline text-sm text-base-content hover:text-blue-200 " href="{{ route('login') }}">
                     {{ __('Already registered?') }}

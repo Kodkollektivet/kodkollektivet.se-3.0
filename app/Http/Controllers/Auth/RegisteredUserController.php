@@ -22,6 +22,7 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'string', 'max:25', 'min:3', 'unique:users', 'alpha_dash'],
             'email'    => ['required', 'string', 'email', 'max:50', 'min:9', 'unique:users'],
             'password' => ['required', 'confirmed', \Illuminate\Validation\Rules\Password::defaults()],
+            'company'  => ['nullable', 'in:on,off']
         ]);
 
         $invite = \App\Models\Invite::where(['sent_to' => $request->email])->first();
@@ -40,6 +41,7 @@ class RegisteredUserController extends Controller
             'username'     => $request->username,
             'email'        => $request->email,
             'password'     => \Illuminate\Support\Facades\Hash::make($request->password),
+            'company'      => $request->company == 'on',
             'role_id'      => strpos($request->email, 'lnu.se') || isset($invite) ? 2 : 4,
             'verification' => !(strpos($request->email, 'lnu.se') || isset($invite)) ? uniqid("{$request->username}_", true) : null,
             'online'       => 1

@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');                                     // Use increments()
             $table->string('name');                                       // for primary
             $table->string('username');
+            $table->boolean('company')->default(false);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('verification')->nullable();
