@@ -100,7 +100,7 @@ class PostController extends Controller
             $link = (isset($post->community) ? '/blog/entry/' : '/post/') . ItemController::prepareLink($post->name) ."/?id={$post->id}";
 
             return response()->json([
-                'description' => substr(ItemController::hideSnippet($post->description), 0, 1000) . "&nbsp;&nbsp;<a href='$link'>View full post</a>"
+                'description' => substr(ItemController::hideSnippet($post->description), 0, 1000) . '&nbsp;&nbsp;<a href="'.$link.'">View full post</a>'
             ]);
         }
     }
