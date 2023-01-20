@@ -71,7 +71,7 @@
 
                 <div class="mt-2 flex flex-row items-center space-x-5 xs:hidden sm:hidden">
 
-                    @if ($board)
+                    @if ($board || $user->company)
                     <a href="{{ route('member', ['user' => $user->username]) }}/community-posts" class="flex h-20 w-40 flex-col items-center justify-center rounded-md border-1 transition ease-in-out duration-300 hover:bg-primary bg-opacity-40 backdrop-blur text-gray-500 hover:text-base-300 shadow-xl px-2 py-12 sm:px-2 lg:px-2 border-1 bg-base-100 border-gray-800">
                         <div class="flex flex-row items-center justify-center">
                             <svg class="mr-3 fill-current" xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +232,7 @@
 
                         @foreach ($routes as $route)
 
-                            @if ($board || $route != 'Community Posts')
+                            @if ($board || $user->company || $route != 'Community Posts')
                             <?php $a_route = str_replace(' ', '-', strtolower($route)); ?>
                             <li>
                                 <a href="{{ route('member', ['user' => $user->username]) . '/' . $a_route }}" class="transition ease-in-out duration-300 hover:text-blue-100 @if (Route::current()->page == $a_route) active @endif">{{ $route }}</a>
