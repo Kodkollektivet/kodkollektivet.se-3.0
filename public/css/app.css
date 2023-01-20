@@ -15527,6 +15527,12 @@ body[dir="rtl"] .checkbox:checked,
 .fill-blue-200 {
   fill: #bfdbfe;
 }
+.fill-info {
+  fill: hsl(var(--in));
+}
+.fill-warning {
+  fill: hsl(var(--wa));
+}
 .fill-gray-500 {
   fill: #6b7280;
 }
@@ -15544,12 +15550,6 @@ body[dir="rtl"] .checkbox:checked,
 }
 .fill-secondary {
   fill: hsl(var(--s));
-}
-.fill-info {
-  fill: hsl(var(--in));
-}
-.fill-warning {
-  fill: hsl(var(--wa));
 }
 .stroke-current {
   stroke: currentColor;

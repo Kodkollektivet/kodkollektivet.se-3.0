@@ -27,29 +27,36 @@ class RegisteredUserController extends Controller
 
         $invite = \App\Models\Invite::where(['sent_to' => $request->email])->first();
         
-        if (isset($invite) && !$invite->accepted) {
+        if (isset($invite) && !$invite->accepted)
+        {
             $invite->accepted = true;
             $invite->save();
-        } elseif(!isset($invite)) {
+        } elseif(!isset($invite))
+        {
             $request->email = EmailController::verify($request->email);
         } else {
             throw \Illuminate\Validation\ValidationException::withMessages(['email' => 'Email already in use or previous registration attempt failed.']);
         }
+
+        $company = $request->company == 'on';
 
         $user = \App\Models\User::create([
             'name'         => $request->name,
             'username'     => $request->username,
             'email'        => $request->email,
             'password'     => \Illuminate\Support\Facades\Hash::make($request->password),
-            'company'      => $request->company == 'on',
+            'company'      => $company,
             'role_id'      => strpos($request->email, 'lnu.se') || isset($invite) ? 2 : 4,
-            'verification' => !(strpos($request->email, 'lnu.se') || isset($invite)) ? uniqid("{$request->username}_", true) : null,
+            'position_id'  => $company && isset($invite) ? 16 : null,
+            'verification' => !$company && !(strpos($request->email, 'lnu.se') || isset($invite)) ? uniqid("{$request->username}_", true) : null,
             'online'       => 1
         ]);
 
-        if (isset($user->verification)) {
-            EmailController::sendVerificationEmail($user->email, $user->verification);
-        } elseif (isset($invite)) {
+        isset($user->verification) && !$user->company ? EmailController::sendVerificationEmail($user->email, $user->verification)
+                                                      : (isset($user->verification) && $user->company ? EmailController::sendCompanyNotification($user->email) : null);
+        
+        if (isset($invite))
+        {
             $action = \App\Models\user_action::create(['user_id' => $user->id, 'item_id' => $invite->id, 'item_type' => 'invite', 'action' => 'accepted']);
                       \App\Models\Notification::create(['user_id' => $invite->author->id, 'action_id' => $action->id]);
 

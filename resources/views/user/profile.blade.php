@@ -153,6 +153,14 @@
                                     <a href="/edit-profile/?user={{ $user->id }}" class="p-2 transition ease-in-out duration-200 text-blue-200 hover:text-teal-200">Edit</a>
                                 </li>
 
+                                    @if ($user->company && $user->role_id != 2)
+
+                                    <li>
+                                        <a onclick="verifyCompnay({{ $user->id }})" class="p-2 transition ease-in-out duration-200 text-blue-200 hover:text-teal-200">Verify</a>
+                                    </li>
+
+                                    @endif
+
                                 @endif
 
                                 @if ($allow_ban)
@@ -385,6 +393,33 @@
         })
     }
 </script>
+
+    @if (isset(Auth::user()->position_id) && Auth::user()->position->edit_users)
+
+    @include('components.alert-modal')
+
+    <script>
+    function verifyCompnay(id) {
+        $.ajax({
+            headers:     {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            url:         `/compnay-verify/${id}`,
+            method:      "POST",
+            success:     function (result) {
+                $('#alert-wrapper h2').text('Company verified!')
+                $('#user-wrapper h2 svg').replaceWith('<svg class="w-5 ml-2 fill-info" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>')
+
+                setTimeout(() => { alertToggle() }, 10)
+            },
+            error: function (result) {
+                result.responseJSON && result.responseJSON.message ? $('#alert-wrapper h2').text(result.responseJSON.message) : null
+
+                setTimeout(() => { alertToggle() }, 10)
+            }
+        })
+    }
+    </script>
+
+    @endif
 
 @endif
 

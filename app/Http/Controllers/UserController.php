@@ -10,6 +10,8 @@ use App\Models\Follows;
 use Illuminate\Http\Request;
 use App\Http\Controllers\ItemController;
 
+use Illuminate\Support\Facades\Schema;
+
 
 class UserController extends Controller
 {
@@ -126,7 +128,7 @@ class UserController extends Controller
         if ($user->role_id == 4 && $key == $user->verification)
         {
             $user->role_id = 2;
-            $user->company ? $user->position_id = 16 : null;
+            // $user->company ? $user->position_id = 16 : null;
             $user->email_verified_at = time();
             $user->save();
 
@@ -136,10 +138,28 @@ class UserController extends Controller
         return redirect("/member/$user->username");
     }
 
+    public function verifyCompany(User $admin, int $id)
+    {
+        $user = User::find($id);
+
+        if ($admin->role_id == 1 && isset($user) && $user->company)
+        {
+            $user->role_id     = 2;
+            $user->position_id = 16;
+            $user->save();
+
+            \App\Http\Controllers\EmailController::sendCompanyVerification($user);
+
+            return response()->json(['message' => 'Company verified! 👍'], 200);
+        }
+
+        return response()->json(['message' => 'Failed to verify user!'], 400);
+    }
+
     public function update(array $request, User $user)
     {
-        $user_columns    = \Illuminate\Support\Facades\Schema::getColumnListing('users');
-        $profile_columns = \Illuminate\Support\Facades\Schema::getColumnListing('user_profiles');
+        $user_columns    = Schema::getColumnListing('users');
+        $profile_columns = Schema::getColumnListing('user_profiles');
         $profile         = \App\Models\UserProfile::where('user_id', $user->id)->first();
 
         while (isset($request['cover']) || isset($request['avatar']))
@@ -174,7 +194,7 @@ class UserController extends Controller
             $user->role_id == 1 && in_array($request['role_id'], [2, 3]) ? $request['date_ended'] = date('Y-m-d') : null;
         }
         
-        isset($request['password']) ? $request['password'] = \Illuminate\Support\Facades\Hash::make($request['password']) : null;
+        isset($request['password']) ? $request['password'] = Hash::make($request['password']) : null;
 
         foreach ($request as $key => $value)
         {

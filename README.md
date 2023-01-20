@@ -130,5 +130,5 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 5. Newsletter
 6. Discord integration (primarily for the "doorbell" notification) ✅
 7. Websockets and instant messaging
-8. Company accounts, user flow etc
+8. Company accounts, user flow etc ✅
 9. Forum / helpdesk

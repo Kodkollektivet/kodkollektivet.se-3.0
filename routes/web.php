@@ -295,6 +295,10 @@ Route::group(['middleware' => 'auth'], function () {
         return SponsorController::show($id);
     });
 
+    Route::post('/compnay-verify/{id}', function (int $id) {
+        return UserController::verifyCompany(Auth::user(), $id);
+    });
+
 });
 
 Route::get('/posts-fetch-more', function (Request $request) {
