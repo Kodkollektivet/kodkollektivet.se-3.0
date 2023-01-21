@@ -238,7 +238,7 @@
 
 </div>
 
-<section style="height: 678px; max-height: 50vh" class="w-screen m-0 p-0" id="map">
+<section style="height: 678px; max-height: 50vh" class="max-w-screen m-0 p-0" id="map">
 
 </section>
 

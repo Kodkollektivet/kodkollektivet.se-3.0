@@ -65,3 +65,13 @@ iframe.Discord {
     border-radius: 0 !important;
     padding-bottom: 36px !important;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: transparent;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background: #00ebd894;
+}
