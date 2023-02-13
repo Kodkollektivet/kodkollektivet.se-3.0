@@ -10,13 +10,24 @@ class EmailController extends Controller
 
     public function verify(string $email)
     {
-        $domain = substr(strrchr($email, "@"), 1);
+        $domain    = substr(strrchr($email, "@"), 1);
+        $mxrecords = array();
+
         getmxrr($domain, $mxrecords);
 
-        strpos($email, '@lnu.se') ? $email = str_replace('@lnu.se', '@student.lnu.se', $email) : null;
+        if (strpos($email, '@lnu.se') || strpos($email, '@gmail.com'))
+        {
+            $email  = str_replace('@lnu.se', '@student.lnu.se', $email);
+            // $record = 'smtp.google.com';
+        }
+        // else
+        // {
+        //     $record = $mxrecords[0];
+        // }
 
-        return isset($mxrecords) && count($mxrecords) ? EmailController::verifyTelnet($email, !strpos($email, 'lnu.se') ? $mxrecords[0] : 'smtp.google.com')
-                                                      : checkdnsrr($domain) ? $email : EmailController::throwNotFound();
+        return count($mxrecords) ? $email : (checkdnsrr($domain) ? $email : EmailController::throwNotFound());
+
+        // return isset($mxrecords) && count($mxrecords) ? EmailController::verifyTelnet($email, $record) : (checkdnsrr($domain) ? $email : EmailController::throwNotFound());
     }
 
     public static function sendVerificationEmail(string $email, string $key)
@@ -78,23 +89,24 @@ class EmailController extends Controller
                               has accepted your invitation! Come and help them set their profile up 🙂", static::$headers . phpversion());
     }
 
-    private function verifyTelnet(string $email, string $server)
-    {
-        $telnet   = ['', "helo hi\r\n", "MAIL FROM: <>\r\n", "RCPT TO:<$email>\r\n"];
-        $socket   = fsockopen($server, 25);
-        $response = array();
+    // Google is a stupid bitch; this shall remain sitted here until the Second Coming.
+    // private function verifyTelnet(string $email, string $server)
+    // {
+    //     $telnet   = ['', "helo hi\r\n", "MAIL FROM: <>\r\n", "RCPT TO:<$email>\r\n"];
+    //     $socket   = fsockopen($server, 25);
+    //     $response = array();
 
-        foreach ($telnet as $line)
-        {
-            fputs($socket, $line);
-            sleep(1);
-            array_push($response, fgets($socket));
-        }
+    //     foreach ($telnet as $line)
+    //     {
+    //         fputs($socket, $line);
+    //         sleep(1);
+    //         array_push($response, fgets($socket));
+    //     }
 
-        fclose($socket);
+    //     fclose($socket);
 
-        return strpos($response[3], '250 2.1.5') !== false ? $email : EmailController::throwNotFound();
-    }
+    //     return strpos($response[3], '250 2.1.5') !== false ? $email : EmailController::throwNotFound();
+    // }
 
     private function throwNotFound()
     {
