@@ -99,6 +99,7 @@ This repository utilises a slightly modified version of the Laravel (v8.83.13) f
 8. @kodkollektivet.se emails for board people ✅
 9. Address + Google Maps ✅
 10. Favicon ✅
+11. Someone suggested surveys (and I don't know what to do) ⚠️
 
 ### Other
 1. Refactor: EventController, PostController, ProjectController

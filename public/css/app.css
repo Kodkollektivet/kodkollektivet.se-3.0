@@ -15633,10 +15633,6 @@ body[dir="rtl"] .checkbox:checked,
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
 .py-16 {
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -15652,6 +15648,10 @@ body[dir="rtl"] .checkbox:checked,
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -15910,6 +15910,10 @@ body[dir="rtl"] .checkbox:checked,
   --tw-text-opacity: 1;
   color: hsl(var(--b3, var(--b2)) / var(--tw-text-opacity));
 }
+.text-teal-400 {
+  --tw-text-opacity: 1;
+  color: rgb(45 212 191 / var(--tw-text-opacity));
+}
 .text-neutral {
   --tw-text-opacity: 1;
   color: hsl(var(--n) / var(--tw-text-opacity));
@@ -15973,10 +15977,6 @@ body[dir="rtl"] .checkbox:checked,
 .text-indigo-700 {
   --tw-text-opacity: 1;
   color: rgb(67 56 202 / var(--tw-text-opacity));
-}
-.text-teal-400 {
-  --tw-text-opacity: 1;
-  color: rgb(45 212 191 / var(--tw-text-opacity));
 }
 .underline {
   -webkit-text-decoration-line: underline;
@@ -16556,11 +16556,6 @@ iframe.Discord {
   background-color: hsl(var(--p) / var(--tw-bg-opacity));
 }
   
-.hover\:bg-gray-200:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-  
 .hover\:bg-neutral:hover {
   --tw-bg-opacity: 1;
   background-color: hsl(var(--n) / var(--tw-bg-opacity));
@@ -16662,14 +16657,14 @@ iframe.Discord {
   color: hsl(var(--b3, var(--b2)) / var(--tw-text-opacity));
 }
   
-.hover\:text-teal-200:hover {
-  --tw-text-opacity: 1;
-  color: rgb(153 246 228 / var(--tw-text-opacity));
-}
-  
 .hover\:text-info:hover {
   --tw-text-opacity: 1;
   color: hsl(var(--in) / var(--tw-text-opacity));
+}
+  
+.hover\:text-teal-200:hover {
+  --tw-text-opacity: 1;
+  color: rgb(153 246 228 / var(--tw-text-opacity));
 }
   
 .hover\:text-base-100:hover {
